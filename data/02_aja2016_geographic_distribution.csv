@@ -1,0 +1,7 @@
+scope,location_type,studio_count,note
+national,total,622,"All anime production-related companies excluding sound production (AJA 2016 立地調査)"
+national,prime_contractor,141,"元請け - leads production"
+national,subcontractor,481,"下請け - specialized (in-between, 3DCG, finishing, etc.)"
+tokyo,total,542,"Tokyo prefecture aggregate (87.1% of national)"
+ward,Suginami,138,"Most concentrated ward in Japan"
+ward,Nerima,103,"2nd most concentrated; birthplace of anime industry"

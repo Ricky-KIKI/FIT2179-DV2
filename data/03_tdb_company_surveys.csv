@@ -1,0 +1,6 @@
+survey_year,data_year,total_companies_surveyed,tokyo_companies,tokyo_share_pct,annual_revenue_usd_billion,avg_revenue_per_company_usd_million,note
+2018,2017,255,,90.0,,,"Tokyo share ~90% (article says 'about 90%')"
+2022,2021,309,276,89.3,,,
+2023,2022,,,,,,"Data implied but not directly cited in search results - VERIFY"
+2024,2023,317,285,89.9,2.34,7.79,"30% YoY growth in revenue"
+2025,2024,293,,,2.45,8.35,"-7.6% companies; +4% revenue; only 40% posted gains"

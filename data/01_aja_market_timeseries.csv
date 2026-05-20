@@ -1,0 +1,9 @@
+year,total_market_jpy_trillion,domestic_jpy_trillion,overseas_jpy_trillion,production_side_jpy_billion,yoy_growth_pct,event_note
+2009,1.2661,,,,,Time series anchor point cited by AJA
+2014,1.64,,,,,10-year-ago reference
+2019,2.5145,,,,,Previous record before 2020; +15.3% YoY
+2020,2.4261,1.1805,1.2394,274.4,-3.5,COVID-19 contraction; overseas first time exceeded domestic
+2021,2.7422,1.4288,1.3134,,13.3,Recovery; domestic regained lead
+2022,2.9277,1.4685,1.4592,340.7,6.8,Near-equal domestic/overseas
+2023,3.3465,1.6243,1.7222,427.2,14.3,Overseas exceeded domestic (51.5%) - sustainable shift
+2024,3.8407,1.6705,2.1702,466.2,14.8,Record; overseas 56% / domestic 44%; overseas +26% YoY
