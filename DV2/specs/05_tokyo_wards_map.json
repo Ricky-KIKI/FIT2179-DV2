@@ -1,0 +1,191 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Inside Tokyo — Suginami (138) + Nerima (103) with anchor studio markers",
+
+  "width": 700,
+  "height": 520,
+  "background": "transparent",
+
+  "config": {"view": {"stroke": null}, "font": "Manrope"},
+
+  "projection": {
+    "type": "identity",
+    "scale": 60,
+    "translate": [-27250, -18420]
+  },
+
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/Ricky-KIKI/FIT2179-DV2/refs/heads/main/DV2/data/japan.json",
+        "format": {"type": "topojson", "feature": "municipalities"}
+      },
+      "transform": [{"filter": "datum.id != null && substring(datum.id, 0, 2) == '13'"}],
+      "mark": {"type": "geoshape", "fill": "#E6DFD0", "stroke": "#FAF7F0", "strokeWidth": 0.6}
+    },
+
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/Ricky-KIKI/FIT2179-DV2/refs/heads/main/DV2/data/japan.json",
+        "format": {"type": "topojson", "feature": "municipalities"}
+      },
+      "transform": [
+        {
+          "lookup": "id",
+          "from": {
+            "data": {
+              "values": [
+                {"wid": "13115", "studios": 138},
+                {"wid": "13120", "studios": 103}
+              ]
+            },
+            "key": "wid",
+            "fields": ["studios"]
+          }
+        },
+        {"filter": "datum.studios != null"}
+      ],
+      "mark": {"type": "geoshape", "stroke": "#FAF7F0", "strokeWidth": 1.5},
+      "encoding": {
+        "color": {
+          "field": "studios", "type": "quantitative",
+          "scale": {"range": ["#EDA1A1", "#D63838"], "domain": [95, 145]},
+          "legend": null
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {"name": "MAPPA",          "lon": 459.55, "lat": 310.70},
+          {"name": "Bones",          "lon": 460.20, "lat": 310.40},
+          {"name": "Sunrise",        "lon": 461.05, "lat": 310.70},
+          {"name": "Trigger",        "lon": 459.60, "lat": 311.65},
+          {"name": "WHITE FOX",      "lon": 461.00, "lat": 311.50},
+          {"name": "ufotable",       "lon": 461.20, "lat": 311.05},
+          {"name": "Toei Animation", "lon": 460.20, "lat": 309.55},
+          {"name": "Mushi Production","lon": 460.80, "lat": 310.20},
+          {"name": "Studio Ghibli",  "lon": 457.49, "lat": 311.19}
+        ]
+      },
+      "mark": {"type": "circle", "size": 100, "fill": "#1A1716", "stroke": "#FAF7F0", "strokeWidth": 2.5},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude":  {"field": "lat", "type": "quantitative"},
+        "tooltip":   [{"field": "name", "type": "nominal", "title": "Studio"}]
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {"name": "Sunrise",        "lon": 461.05, "lat": 310.70},
+          {"name": "ufotable",       "lon": 461.20, "lat": 311.05},
+          {"name": "Toei Animation", "lon": 460.20, "lat": 309.55},
+          {"name": "Mushi Production","lon": 460.80, "lat": 310.20}
+        ]
+      },
+      "mark": {
+        "type": "text", "font": "Manrope", "fontSize": 11, "fontWeight": 600,
+        "color": "#1A1716", "align": "left", "dx": 10
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude":  {"field": "lat", "type": "quantitative"},
+        "text":      {"field": "name"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"name": "MAPPA",          "lon": 459.55, "lat": 310.70},
+          {"name": "Trigger",        "lon": 459.60, "lat": 311.65},
+          {"name": "Studio Ghibli",  "lon": 457.49, "lat": 311.19}
+        ]
+      },
+      "mark": {
+        "type": "text", "font": "Manrope", "fontSize": 11, "fontWeight": 600,
+        "color": "#1A1716", "align": "right", "dx": -10
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude":  {"field": "lat", "type": "quantitative"},
+        "text":      {"field": "name"}
+      }
+    },
+    {
+      "data": {"values": [{"name": "Bones", "lon": 460.20, "lat": 310.40}]},
+      "mark": {
+        "type": "text", "font": "Manrope", "fontSize": 11, "fontWeight": 600,
+        "color": "#1A1716", "align": "center", "dy": -14
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude":  {"field": "lat", "type": "quantitative"},
+        "text":      {"field": "name"}
+      }
+    },
+    {
+      "data": {"values": [{"name": "WHITE FOX", "lon": 461.00, "lat": 311.50}]},
+      "mark": {
+        "type": "text", "font": "Manrope", "fontSize": 11, "fontWeight": 600,
+        "color": "#1A1716", "align": "center", "dy": 16
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude":  {"field": "lat", "type": "quantitative"},
+        "text":      {"field": "name"}
+      }
+    },
+
+    {
+      "data": {"values": [{"label": "SUGINAMI", "lon": 460.5, "lat": 312.4}]},
+      "mark": {
+        "type": "text", "font": "Shippori Mincho B1", "fontSize": 15, "fontWeight": 800,
+        "color": "#D63838", "align": "center"
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude":  {"field": "lat", "type": "quantitative"},
+        "text":      {"field": "label"}
+      }
+    },
+    {
+      "data": {"values": [{"sub": "138 STUDIOS · 22% of national total", "lon": 460.5, "lat": 312.4}]},
+      "mark": {
+        "type": "text", "font": "IBM Plex Mono", "fontSize": 9,
+        "color": "#5A524F", "align": "center", "dy": 16
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude":  {"field": "lat", "type": "quantitative"},
+        "text":      {"field": "sub"}
+      }
+    },
+    {
+      "data": {"values": [{"label": "NERIMA", "lon": 460.7, "lat": 308.6}]},
+      "mark": {
+        "type": "text", "font": "Shippori Mincho B1", "fontSize": 15, "fontWeight": 800,
+        "color": "#D63838", "align": "center"
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude":  {"field": "lat", "type": "quantitative"},
+        "text":      {"field": "label"}
+      }
+    },
+    {
+      "data": {"values": [{"sub": "103 STUDIOS · 17% of national total", "lon": 460.7, "lat": 308.6}]},
+      "mark": {
+        "type": "text", "font": "IBM Plex Mono", "fontSize": 9,
+        "color": "#5A524F", "align": "center", "dy": 16
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude":  {"field": "lat", "type": "quantitative"},
+        "text":      {"field": "sub"}
+      }
+    }
+  ]
+}

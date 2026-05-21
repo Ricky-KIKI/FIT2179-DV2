@@ -1,0 +1,60 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Domestic vs overseas anime market revenue, 2020-2024",
+  "width": "container",
+  "height": 340,
+  "padding": {"top": 10, "right": 90, "bottom": 30, "left": 50},
+
+  "data": {
+    "values": [
+      {"year": 2020, "segment": "Domestic", "value": 1.18},
+      {"year": 2021, "segment": "Domestic", "value": 1.43},
+      {"year": 2022, "segment": "Domestic", "value": 1.47},
+      {"year": 2023, "segment": "Domestic", "value": 1.62},
+      {"year": 2024, "segment": "Domestic", "value": 1.67},
+      {"year": 2020, "segment": "Overseas", "value": 1.24},
+      {"year": 2021, "segment": "Overseas", "value": 1.31},
+      {"year": 2022, "segment": "Overseas", "value": 1.46},
+      {"year": 2023, "segment": "Overseas", "value": 1.72},
+      {"year": 2024, "segment": "Overseas", "value": 2.17}
+    ]
+  },
+
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": null,
+      "axis": {"labelAngle": 0, "labelPadding": 8}
+    },
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "Trillion yen",
+      "scale": {"domain": [0, 2.5]}
+    },
+    "color": {
+      "field": "segment",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Domestic", "Overseas"],
+        "range": ["#1A1716", "#D63838"]
+      },
+      "legend": null
+    }
+  },
+
+  "layer": [
+    {
+      "mark": {"type": "line", "strokeWidth": 2.5, "point": {"filled": true, "size": 70}}
+    },
+    {
+      "mark": {"type": "text", "align": "left", "dx": 8, "fontSize": 11, "font": "Manrope", "fontWeight": 600},
+      "encoding": {
+        "text": {"field": "segment"},
+        "x": {"field": "year", "type": "ordinal", "aggregate": "max"},
+        "y": {"field": "value", "type": "quantitative", "aggregate": {"argmax": "year"}}
+      }
+    }
+  ]
+}

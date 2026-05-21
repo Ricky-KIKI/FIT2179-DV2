@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Animation Capital — How 622 Studios Built a $25B Industry from Two Tokyo Neighbourhoods</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Manrope:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <style>
+    :root {
+      --cream: #FAF7F0;          /* page background — warm off-white */
+      --ink: #1A1716;            /* primary text */
+      --ink-soft: #5A524F;       /* secondary text */
+      --line: #D9D2C5;           /* hairlines and dividers */
+      --vermillion: #D63838;     /* 朱色 - accent for highlights */
+      --gold: #A88B3D;           /* secondary accent */
+      --paper: #F2EDDF;          /* card / chart background */
+
+      --serif: 'Shippori Mincho B1', 'Noto Serif JP', Georgia, serif;
+      --sans: 'Manrope', system-ui, sans-serif;
+      --mono: 'IBM Plex Mono', monospace;
+
+      --content-width: 960px;     /* max width — keeps readable line length */
+      --gutter: 32px;
+    }
+
+    /* ---------- RESET & BASE ---------- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--ink);
+      background: var(--cream);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---------- LAYOUT CONTAINER ---------- */
+    .wrap {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* ---------- TYPOGRAPHY ---------- */
+    h1, h2, h3, h4 {
+      font-family: var(--serif);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+    h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
+    h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); margin-top: 4rem; margin-bottom: 0.5rem; }
+    h3 { font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.5rem; font-weight: 600; }
+    h4 { font-size: 1rem; margin-top: 1.5rem; margin-bottom: 0.4rem; }
+
+    p { margin-bottom: 1.1rem; max-width: 65ch; }
+
+    em.kicker {
+      font-family: var(--mono);
+      font-style: normal;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--vermillion);
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+
+    a { color: var(--vermillion); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { background: var(--vermillion); color: var(--cream); }
+
+    .num {
+      font-family: var(--mono);
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .hero {
+      padding: 8rem 0 4rem;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+    .hero .eyebrow {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 2rem;
+    }
+    .hero .title { margin-bottom: 1.5rem; }
+    .hero .standfirst {
+      font-family: var(--serif);
+      font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+      line-height: 1.55;
+      color: var(--ink-soft);
+      max-width: 38em;
+      font-weight: 500;
+    }
+    .hero .byline {
+      margin-top: 3rem;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.05em;
+    }
+    .hero .byline strong { color: var(--ink); font-weight: 500; }
+
+    .hero-numbers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--line);
+    }
+    .hero-num .figure {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1;
+      color: var(--vermillion);
+    }
+    .hero-num .label {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-top: 0.6rem;
+      line-height: 1.4;
+    }
+
+    .chapter-mark {
+      margin-top: 6rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: baseline;
+      gap: 1.2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .chapter-mark .ch-num {
+      font-family: var(--serif);
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--vermillion);
+      line-height: 1;
+    }
+    .chapter-mark .ch-meta {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    .chart {
+      margin: 2.5rem 0 1rem;
+      padding: 1.5rem;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 2px;
+    }
+    .chart .chart-title {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .chart .chart-subtitle {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      margin-bottom: 1rem;
+      max-width: 60ch;
+    }
+    .chart .chart-source {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.05em;
+      margin-top: 0.8rem;
+      padding-top: 0.8rem;
+      border-top: 1px dashed var(--line);
+    }
+    .chart-embed { width: 100%; min-height: 300px; }
+
+    .pull {
+      margin: 3rem 0;
+      padding: 2rem 0 2rem 2rem;
+      border-left: 3px solid var(--vermillion);
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+      line-height: 1.35;
+      color: var(--ink);
+      max-width: 30em;
+      font-weight: 500;
+    }
+    .pull .pull-attr {
+      display: block;
+      margin-top: 1rem;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 400;
+    }
+
+    /* ---------- Custom Viz 3 ---------- */
+    .studio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px;
+      background: var(--line);
+      margin: 2rem 0;
+      border: 1px solid var(--line);
+    }
+    .studio-card {
+      background: var(--paper);
+      padding: 1.2rem;
+      transition: background 0.2s;
+    }
+    .studio-card:hover { background: var(--cream); }
+    .studio-card .name {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .studio-card .name.non-tokyo { color: var(--vermillion); }
+    .studio-card .loc {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+      color: var(--ink-soft);
+      margin-bottom: 0.7rem;
+    }
+    .studio-card .year {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .studio-card .works {
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--ink);
+    }
+
+    /* ---------- Custom Viz4 ---------- */
+    .whyhere-panel {
+      margin: 2rem 0;
+      border: 1px solid var(--line);
+      background: var(--paper);
+    }
+    .whyhere-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--line);
+    }
+    .whyhere-tab {
+      flex: 1 1 auto;
+      padding: 1rem 1.2rem;
+      background: var(--paper);
+      border: none;
+      border-right: 1px solid var(--line);
+      cursor: pointer;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      text-align: left;
+      transition: all 0.15s;
+    }
+    .whyhere-tab:last-child { border-right: none; }
+    .whyhere-tab.active { background: var(--cream); color: var(--vermillion); font-weight: 600; }
+    .whyhere-tab strong { display: block; font-family: var(--serif); font-size: 1rem; color: var(--ink); margin-bottom: 0.2rem; }
+    .whyhere-tab.active strong { color: var(--vermillion); }
+    .whyhere-content {
+      padding: 1.8rem;
+      min-height: 220px;
+    }
+    .whyhere-content .quote {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+    .whyhere-content .factoid {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.04em;
+      line-height: 1.7;
+    }
+    .whyhere-content .factoid strong { color: var(--vermillion); font-weight: 500; }
+
+    /* ---------- FOOTER & METADATA ---------- */
+    footer {
+      margin-top: 8rem;
+      padding: 4rem 0 6rem;
+      border-top: 1px solid var(--line);
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+    }
+    footer h3 {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+      margin-top: 2rem;
+    }
+    footer ul { list-style: none; padding: 0; }
+    footer li { padding: 0.25rem 0; font-size: 0.82rem; }
+    footer .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 700px) {
+      .hero { padding: 5rem 0 3rem; }
+      .hero-numbers { grid-template-columns: 1fr; gap: 1.5rem; }
+      .chapter-mark { flex-direction: column; gap: 0.5rem; }
+      .chapter-mark .ch-num { font-size: 3rem; }
+      .whyhere-tabs { flex-direction: column; }
+      .whyhere-tab { border-right: none; border-bottom: 1px solid var(--line); }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ============================================ -->
+<!-- HERO SECTION                                 -->
+<!-- ============================================ -->
+<section class="hero wrap">
+  <div class="eyebrow">FIT2179 · Data Visualisation 2 · Semester 1, 2026</div>
+  <h1 class="title">The Animation<br>Capital</h1>
+  <p class="standfirst">
+    Japan's anime industry sold <span class="num">$25 billion</span> worth of dreams in 2024.
+    Most of them were drawn within walking distance of one Tokyo train line.
+  </p>
+  <div class="byline">
+    By <strong> Ruiqi Zhou </strong> 
+  </div>
+
+  <div class="hero-numbers">
+    <div class="hero-num">
+      <div class="figure">¥3.84T</div>
+      <div class="label">Total industry value, 2024<br>(<strong>+14.8%</strong> YoY)</div>
+    </div>
+    <div class="hero-num">
+      <div class="figure">56%</div>
+      <div class="label">Revenue from overseas in 2024<br>(was <strong>49%</strong> in 2023)</div>
+    </div>
+    <div class="hero-num">
+      <div class="figure">241</div>
+      <div class="label">Studios in two adjacent Tokyo wards<br>(out of <strong>622</strong> nationally, 2016)</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================ -->
+<!-- INTRO / FRAMING                              -->
+<!-- ============================================ -->
+<section class="wrap">
+  <p style="margin-top: 4rem; font-size: 1.1rem; line-height: 1.7;">
+    Sometime tonight, somewhere in the world, a teenager will click play on a Japanese cartoon and forget where they are
+    for twenty-three minutes. That moment is part of an export industry now larger than Japan's steel industry —
+    one whose international revenue passed domestic revenue for the first time in 2020 and never went back.
+  </p>
+  <p style="font-size: 1.1rem; line-height: 1.7;">
+    But the people who drew those twenty-three minutes are clustered so densely in two Tokyo neighbourhoods
+    that you could walk between most of the major studios in an afternoon. This is the story of an industry whose geography
+    has not caught up with its global ambition.
+  </p>
+</section>
+
+
+<!-- CHAPTER 1 -->
+<section class="wrap">
+
+  <div class="chapter-mark">
+    <span class="ch-num">01</span>
+    <span class="ch-meta">An industry the world finally noticed</span>
+  </div>
+
+  <p style="margin-top: 2rem;">
+    The numbers below come from the Association of Japanese Animations (AJA), which has tracked the industry annually
+    since 2002. The pattern is the same every year: domestic Japan grows slowly, overseas grows fast, and the overseas
+    share keeps climbing. In 2024 overseas alone hit ¥2.17 trillion ($14.25B).
+  </p>
+
+  <!--VIZ 1.1 -->
+  <div class="chart">
+    <div class="chart-title">A $25-billion industry, decade by decade</div>
+    <div class="chart-subtitle">Total anime industry market value in trillion yen. Includes merchandise, music, streaming, and live events.</div>
+    <div id="viz_01" class="chart-embed"></div>
+    <div class="chart-source">Source: AJA Anime Industry Reports 2014–2025 · Plotted years shown have direct verified citation</div>
+  </div>
+
+  <!--VIZ 1.2 -->
+  <div class="chart">
+    <div class="chart-title">The overseas crossover</div>
+    <div class="chart-subtitle">Domestic sales stayed nearly flat from 2020 onward. The growth is entirely overseas. The two lines crossed in 2020, recrossed in 2021–2022, and crossed permanently in 2023.</div>
+    <div id="viz_02" class="chart-embed"></div>
+    <div class="chart-source">Source: AJA Anime Industry Reports 2021–2025</div>
+  </div>
+
+  <div class="pull">
+    "The overseas market now far exceeds local revenues, and the gap will only widen."
+    <span class="pull-attr">Masahiro Hasegawa, AJA Report 2025 lead author, at TIFFCOM October 2025</span>
+  </div>
+
+  <!--VIZ 1.3-->
+  <div class="chart">
+    <div class="chart-title">Where the overseas money comes from</div>
+    <div class="chart-subtitle">Share of overseas market by region, AJA 2022 contract data. North America's share by contracts is small but its streaming revenue dominates: $2.2B (41% of global anime streaming), per Parrot Analytics 2023.</div>
+    <div id="viz_03" class="chart-embed"></div>
+    <div class="chart-source">Source: AJA Anime Industry Report 2023 · Streaming figures via Parrot Analytics 2023</div>
+  </div>
+
+</section>
+
+
+<!--CHAPTER 2-->
+<section class="wrap">
+
+  <div class="chapter-mark">
+    <span class="ch-num">02</span>
+    <span class="ch-meta">Two wards along one train line</span>
+  </div>
+
+  <p style="margin-top: 2rem;">
+    In 2016 the AJA conducted an industry-wide location survey — the most comprehensive ever attempted.
+    It counted <span class="num">622</span> companies involved in anime production. <span class="num">542</span> of them — 87.1% —
+    were headquartered in Tokyo. And inside Tokyo, two neighbouring wards (Suginami and Nerima) held
+    <span class="num">241</span> of those 542 between them.
+  </p>
+
+  <p>
+    Looked at another way: <span class="num">38.7%</span> of Japan's entire animation industry is packed into two wards
+    that together cover less land area than the Brisbane CBD. The pattern is so dense that
+    if you stand at Ogikubo station and walk for twenty minutes in any direction, you will pass studios
+    that made works you know — <em>Demon Slayer</em>, <em>Attack on Titan</em>, <em>Jujutsu Kaisen</em>.
+  </p>
+
+  <!--VIZ 2.1-->
+  <div class="chart">
+    <div class="chart-title">The whole industry, basically one prefecture</div>
+    <div class="chart-subtitle">Anime production companies by location, 2016 AJA survey. Tokyo's 542 studios dwarf every other prefecture combined. Only three non-Tokyo prefectures host nationally significant studios.</div>
+    <div id="viz_04" class="chart-embed" style="min-height: 540px;"></div>
+    <div class="chart-source">Source: AJA 立地調査 2016 (Anime Industry Report 2016) · Map: dataofjapan/land</div>
+  </div>
+
+  <!--VIZ 2.21 -->
+  <div class="chart">
+    <div class="chart-title">Inside Tokyo: the anime corridor</div>
+    <div class="chart-subtitle">Studios cluster along three western train lines — the JR Chuo Line, Seibu Shinjuku Line, and Seibu Ikebukuro Line. Within those lines, Suginami (138 studios) and Nerima (103) tower over every other ward. Markers locate the most internationally visible studios.</div>
+    <div id="viz_05" class="chart-embed" style="min-height: 500px;"></div>
+    <div class="chart-source">Source: AJA 2016 · Anchor studio coordinates from company official sites (approximate; verify with Nominatim for production)</div>
+  </div>
+
+  <!--VIZ 2.3-->
+  <div class="chart">
+    <div class="chart-title">Most studios are tiny</div>
+    <div class="chart-subtitle">Anime studios by employee count, Teikoku Databank 2023 survey of 317 companies. Two-thirds have fewer than 20 employees. The "MAPPA" or "ufotable" you imagine — a 200-person operation — is in the smallest 9%.</div>
+    <div id="viz_06" class="chart-embed"></div>
+    <div class="chart-source">Source: Teikoku Databank Anime Production Market Report 2024 (data year: 2023)</div>
+  </div>
+
+</section>
+
+
+<!-- CHAPTER 3: THE LINEAGE-->
+<section class="wrap">
+
+  <div class="chapter-mark">
+    <span class="ch-num">03</span>
+    <span class="ch-meta">A family tree, not a list</span>
+  </div>
+
+  <p style="margin-top: 2rem;">
+    The 622-studio number doesn't capture what's interesting about Japanese animation: it's
+    a single extended family. Mushi Production trained Yoko Hatta, who founded Kyoto Animation.
+    Madhouse co-founder Masao Maruyama left in 2011 to start MAPPA. Tatsunoko alumni founded
+    Production I.G; ex-Production I.G producer Kenji Horikawa founded P.A. Works in Toyama.
+    Almost every studio that matters today is two or three founders deep into Mushi.
+  </p>
+
+  <!--VIZ 3.1 -->
+  <div class="chart">
+    <div class="chart-title">A late-arriving industry</div>
+    <div class="chart-subtitle">Anime studios by decade of founding, TDB 2023 survey. Most studios standing today are younger than the people watching them — 116 of 317 were founded in the 2010s alone.</div>
+    <div id="viz_07" class="chart-embed"></div>
+    <div class="chart-source">Source: Teikoku Databank 2024 report (data year 2023)</div>
+  </div>
+
+  <!--VIZ 3.2-->
+  <div class="chart">
+    <div class="chart-title">The Mushi Production family tree</div>
+    <div class="chart-subtitle">Lineage of major active studios traced through founders. Each line shows "founder previously worked at." Mushi Production (Osamu Tezuka's 1962 studio) is the great ancestor of nearly every studio on the right.</div>
+    <div id="viz_08" class="chart-embed" style="min-height: 520px;"></div>
+    <div class="chart-source">Source: Lineage assembled from Wikipedia studio articles and Grokipedia for each studio · Hand-curated by author</div>
+  </div>
+
+  <!--VIZ 3.3-->
+  <h3 style="margin-top: 3rem;">Studios you have heard of, located</h3>
+  <p>The most internationally visible studios. Red names are outside Tokyo's 23 special wards.</p>
+  <div class="studio-grid">
+    <div class="studio-card">
+      <div class="name">MAPPA</div>
+      <div class="loc">Suginami, Tokyo</div>
+      <div class="year">Founded 2011</div>
+      <div class="works">Jujutsu Kaisen · Chainsaw Man · Attack on Titan Final · Vinland Saga S2</div>
+    </div>
+    <div class="studio-card">
+      <div class="name">ufotable</div>
+      <div class="loc">Nakano, Tokyo</div>
+      <div class="year">Founded 2000</div>
+      <div class="works">Demon Slayer · Fate/Zero · Fate/stay night UBW</div>
+    </div>
+    <div class="studio-card">
+      <div class="name">Toei Animation</div>
+      <div class="loc">Nerima (Oizumi), Tokyo</div>
+      <div class="year">Founded 1948</div>
+      <div class="works">One Piece · Dragon Ball · Sailor Moon · the 1958 first color anime feature</div>
+    </div>
+    <div class="studio-card">
+      <div class="name">Studio Bones</div>
+      <div class="loc">Suginami (Igusa), Tokyo</div>
+      <div class="year">Founded 1998</div>
+      <div class="works">Fullmetal Alchemist: Brotherhood · My Hero Academia</div>
+    </div>
+    <div class="studio-card">
+      <div class="name">Sunrise / Bandai Namco</div>
+      <div class="loc">Suginami (Kami-Igusa), Tokyo</div>
+      <div class="year">Founded 1972</div>
+      <div class="works">Mobile Suit Gundam · Cowboy Bebop</div>
+    </div>
+    <div class="studio-card">
+      <div class="name">Mushi Production</div>
+      <div class="loc">Nerima, Tokyo</div>
+      <div class="year">Founded 1962</div>
+      <div class="works">Astro Boy (1963, the first anime TV series). Tezuka's studio — ancestor of many.</div>
+    </div>
+    <div class="studio-card">
+      <div class="name non-tokyo">Studio Ghibli</div>
+      <div class="loc">Koganei, Tokyo (not 23-ku)</div>
+      <div class="year">Founded 1985</div>
+      <div class="works">Spirited Away · Princess Mononoke · The Boy and the Heron</div>
+    </div>
+    <div class="studio-card">
+      <div class="name non-tokyo">Kyoto Animation</div>
+      <div class="loc">Uji, Kyoto Prefecture</div>
+      <div class="year">Founded 1981</div>
+      <div class="works">K-On! · Violet Evergarden · A Silent Voice</div>
+    </div>
+    <div class="studio-card">
+      <div class="name non-tokyo">P.A. Works</div>
+      <div class="loc">Nanto, Toyama Prefecture</div>
+      <div class="year">Founded 2000</div>
+      <div class="works">Shirobako · Hanasaku Iroha · Angel Beats!</div>
+    </div>
+  </div>
+
+  <!--VIZ 3.4-->
+  <div class="chart">
+    <div class="chart-title">Two clusters: the legacy houses and the 2010s boom</div>
+    <div class="chart-subtitle">Each dot is one studio in the anchor set. Position shows founding year and number of works in our collection. Red dots are non-Tokyo or non-23-ku studios — the rare outliers.</div>
+    <div id="viz_09" class="chart-embed"></div>
+    <div class="chart-source">Source: founding years from Wikipedia studio pages · "Works" count = entries listed in this article's anchor table</div>
+  </div>
+
+</section>
+
+
+<!-- CHAPTER 4 -->
+<section class="wrap">
+
+  <div class="chapter-mark">
+    <span class="ch-num">04</span>
+    <span class="ch-meta">The handful that left Tokyo</span>
+  </div>
+
+  <p style="margin-top: 2rem;">
+    Of the 622 studios in the AJA 2016 count, roughly 80 — only <span class="num">12.9%</span> — were headquartered
+    outside Tokyo. Almost all the ones outside Tokyo that anyone has heard of can be listed in a single paragraph.
+    What follows are the four most prominent, and why each one ended up where it did.
+  </p>
+
+  <!--VIZ 4.1-->
+  <div class="chart">
+
+
+
+  </div>
+
+  <!--VIZ 4.2-->
+  <h3 style="margin-top: 3rem;">Why here, not Tokyo?</h3>
+  <p>Each of these studios chose its location for a specific reason. Click a name to read it.</p>
+
+  <div class="whyhere-panel">
+    <div class="whyhere-tabs">
+      <button class="whyhere-tab active" data-studio="kyoani">
+        <strong>Kyoto Animation</strong>Uji, Kyoto
+      </button>
+      <button class="whyhere-tab" data-studio="pa">
+        <strong>P.A. Works</strong>Nanto, Toyama
+      </button>
+      <button class="whyhere-tab" data-studio="ufo">
+        <strong>ufotable Tokushima</strong>Tokushima
+      </button>
+      <button class="whyhere-tab" data-studio="ghibli">
+        <strong>Studio Ghibli</strong>Koganei, Tokyo
+      </button>
+    </div>
+    <div class="whyhere-content" id="whyhere-content">
+      <!-- Filled by JavaScript -->
+    </div>
+  </div>
+
+</section>
+
+
+<!-- CHAPTER 5 -->
+<section class="wrap">
+
+  <div class="chapter-mark">
+    <span class="ch-num">05</span>
+    <span class="ch-meta">An industry that earns and a workforce that doesn't</span>
+  </div>
+
+  <p style="margin-top: 2rem;">
+    The story would be cleaner if it ended at "Japan built a $25 billion industry."
+    It doesn't. The production studios — the ones doing the drawing — receive only <span class="num">13%</span>
+    of that $25 billion. The rest goes to production committees: TV networks, publishers, and toy companies
+    who fund anime in exchange for the IP rights.
+  </p>
+
+  <p>
+    Even as the industry hits records, studios fold. Eight closed between January and September 2025 —
+    the third consecutive annual increase, on pace to match the all-time worst year of 2018.
+  </p>
+
+  <!--5.1 -->
+  <div class="chart">
+    <div class="chart-title">Closures are rising again</div>
+    <div class="chart-subtitle">Annual studio closures and bankruptcies tracked by Teikoku Databank: 2018's all-time high of 16, then a three-year climb 2023–2025. Earlier years not shown (TDB has surveyed since 2000 but year-totals before 2018 are difficult to source publicly).</div>
+    <div id="viz_11" class="chart-embed"></div>
+    <div class="chart-source">Source: Teikoku Databank reports 2018, 2023, 2024, 2025 (via Anime News Network)</div>
+  </div>
+
+  <!--5.2 -->
+  <div class="chart">
+    <div class="chart-title">Hours have come down. Wages haven't matched.</div>
+    <div class="chart-subtitle">Monthly working hours of anime industry workers, from JAniCA's surveys. Hours have dropped from 273 (2008) to about 220 (2024) — still well above Japan's national average of 163.5.</div>
+    <div id="viz_12" class="chart-embed"></div>
+    <div class="chart-source">Source: JAniCA working condition surveys (2008–2021) and NAFCA 2024 survey</div>
+  </div>
+
+</section>
+
+
+<!-- ============================================ -->
+<!-- FOOTER / METADATA                            -->
+<!-- ============================================ -->
+<footer class="wrap">
+
+  <div class="meta-grid">
+    <div>
+      <h3>About this piece</h3>
+      <p style="font-size: 0.82rem;">
+        A student visualisation for FIT2179 Data Visualisation 2, Semester 1 2026. 
+      </p>
+      <p style="font-size: 0.82rem;">
+        <strong>Author:</strong> [Ruiqi Zhou]<br>
+        <strong>Repository:</strong> <a href="https://github.com/Ricky-KIKI/FIT2179-DV2" target="_blank">https://github.com/Ricky-KIKI/FIT2179-DV2</a>
+      </p>
+    </div>
+
+
+    <div>
+      <h3>AI acknowledgement</h3>
+      <p style="font-size: 0.82rem;">
+        AI was used as a research, locating primary data sources, 
+        text polishing tool, and assisting tool for CSS/HTML.
+      </p>
+    </div>
+  </div>
+
+  <p style="margin-top: 4rem; font-size: 0.75rem; color: var(--ink-soft); font-family: var(--mono); letter-spacing: 0.04em;">
+    [Ruiqi Zhou] ·  FIT2179 · Data Visualisation 2 · Semester 1, 2026
+  </p>
+
+</footer>
+
+
+<!-- ============================================ -->
+<!-- JAVASCRIPT: load all charts                  -->
+<!-- ============================================ -->
+<script>
+  const charts = [
+    { id: 'viz_01', file: 'specs/01_market_growth.json' },
+    { id: 'viz_02', file: 'specs/02_domestic_vs_overseas.json' },
+    { id: 'viz_03', file: 'specs/03_overseas_regions.json' },
+    { id: 'viz_04', file: 'specs/04_japan_map.json' },
+    { id: 'viz_05', file: 'specs/05_tokyo_wards_map.json' },
+    { id: 'viz_06', file: 'specs/06_studio_size.json' },
+    { id: 'viz_07', file: 'specs/07_founding_decades.json' },
+    { id: 'viz_08', file: 'specs/08_lineage_network.json' },
+    { id: 'viz_09', file: 'specs/09_anchor_scatter.json' },
+    { id: 'viz_10', file: 'specs/10_non_tokyo_map.json' },
+    { id: 'viz_11', file: 'specs/11_closures.json' },
+    { id: 'viz_12', file: 'specs/12_working_hours.json' }
+  ];
+
+  const embedOptions = {
+    actions: false,       
+    renderer: 'svg',       
+    config: {
+      background: 'transparent',
+      font: 'Manrope, system-ui, sans-serif',
+      title: {
+        font: 'Shippori Mincho B1, Georgia, serif',
+        fontSize: 0,         
+      },
+      axis: {
+        labelFont: 'IBM Plex Mono, monospace',
+        labelFontSize: 11,
+        labelColor: '#5A524F',
+        titleFont: 'Manrope, system-ui, sans-serif',
+        titleFontSize: 12,
+        titleColor: '#1A1716',
+        titleFontWeight: 500,
+        domainColor: '#D9D2C5',
+        tickColor: '#D9D2C5',
+        gridColor: '#E6DFD0',
+        gridDash: [2, 3]
+      },
+      view: { stroke: null },
+      range: {
+        category: ['#D63838', '#A88B3D', '#1A1716', '#5A524F', '#9B9B95']
+      }
+    }
+  };
+
+  charts.forEach(function(chart) {
+    fetch(chart.file)
+      .then(function(response) { return response.json(); })
+      .then(function(spec) {
+        vegaEmbed('#' + chart.id, spec, embedOptions)
+          .catch(function(err) {
+            console.error('Failed to render', chart.id, err);
+            document.getElementById(chart.id).innerHTML =
+              '<p style="color:#5A524F; font-family: IBM Plex Mono; font-size: 0.85rem; padding: 1rem;">' +
+              'Chart could not load. Spec file: <code>' + chart.file + '</code></p>';
+          });
+      })
+      .catch(function(err) {
+        console.error('Failed to fetch spec', chart.file, err);
+        document.getElementById(chart.id).innerHTML =
+          '<p style="color:#5A524F; font-family: IBM Plex Mono; font-size: 0.85rem; padding: 1rem;">' +
+          'Spec file not found: <code>' + chart.file + '</code> — make sure this file exists in your repo.</p>';
+      });
+  });
+
+
+  const whyHereData = {
+    kyoani: {
+      quote: "Founded by husband-and-wife Yoko and Hideaki Hatta in 1981, Kyoto Animation began as a small in-between subcontractor for Tokyo-based companies — operated, at first, partly by local housewives in Uji.",
+      facts: [
+        ["FOUNDED", "1981 (incorporated 1985)"],
+        ["FOUNDER", "Hideaki Hatta & Yoko Hatta"],
+        ["WHY HERE", "Hatta's family was in Kyoto. They started by taking subcontracted work from Tokyo studios remotely — a model that worked because animation can be mailed."],
+        ["NOTABLE", "Unique in industry: salaried in-house animators, not freelance per-frame."],
+        ["ADDRESS", "32 Oseto, Kohata, Uji-shi, Kyoto 611-0002"]
+      ]
+    },
+    pa: {
+      quote: "P.A. Works founder Kenji Horikawa worked at three Tokyo studios — Tatsunoko, Production I.G, Bee Train — before deciding he wanted to raise his family back in Toyama, where he was from.",
+      facts: [
+        ["FOUNDED", "10 November 2000"],
+        ["FOUNDER", "Kenji Horikawa"],
+        ["WHY HERE", "Horikawa wanted to live in Toyama. He kept a Tokyo coordination office, but the actual drawing happens in rural Nanto."],
+        ["NOTABLE", "Shirobako (2014) is essentially a love letter to a working anime studio, drawn at P.A. Works itself."],
+        ["ADDRESS", "1508-8 Tatenoharahigashi, Nanto, Toyama"]
+      ]
+    },
+    ufo: {
+      quote: "ufotable opened its Tokushima studio in April 2009. Tokyo HQ remained in Nakano, but Tokushima became a satellite — used partly to train new animators and partly because it could.",
+      facts: [
+        ["FOUNDED (main)", "October 2000, Nakano-ku Tokyo"],
+        ["TOKUSHIMA STUDIO", "April 2009"],
+        ["WHY HERE", "Tokushima has lower costs and a connection to studio leadership. ufotable runs an annual local festival, Machi★Asobi, that has become a major regional event."],
+        ["NOTABLE", "Tokushima studio handled significant work on Demon Slayer."],
+        ["ADDRESS (Tokushima)", "Higashi-Funaba-cho, Tokushima-shi"]
+      ]
+    },
+    ghibli: {
+      quote: "Ghibli isn't 'non-Tokyo' strictly — Koganei is part of Tokyo Metropolis — but it's outside the 23 special wards, in the leafy western suburbs where Miyazaki has lived for decades.",
+      facts: [
+        ["FOUNDED", "15 June 1985"],
+        ["FOUNDERS", "Hayao Miyazaki, Isao Takahata, Toshio Suzuki"],
+        ["WHY HERE", "Miyazaki and Takahata both lived in the western Tokyo suburbs. Originally based in Kichijōji (Musashino); moved to Koganei in 1992."],
+        ["NOTABLE", "The Ghibli Museum sits in adjacent Mitaka, inside Inokashira Park."],
+        ["ADDRESS", "1-4-25 Kajinocho, Koganei-shi, Tokyo 184-0002"]
+      ]
+    }
+  };
+
+  function renderWhyHere(key) {
+    const data = whyHereData[key];
+    const html = '<div class="quote">' + data.quote + '</div>' +
+      '<div class="factoid">' +
+      data.facts.map(function(pair) {
+        return '<strong>' + pair[0] + '</strong> · ' + pair[1];
+      }).join('<br>') +
+      '</div>';
+    document.getElementById('whyhere-content').innerHTML = html;
+  }
+
+  document.querySelectorAll('.whyhere-tab').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.whyhere-tab').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      renderWhyHere(btn.dataset.studio);
+    });
+  });
+
+  renderWhyHere('kyoani');
+</script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Anime studios by decade of founding, TDB 2023 survey",
+
+  "width": "container",
+  "height": 300,
+  "padding": {"top": 10, "right": 30, "bottom": 30, "left": 50},
+
+  "data": {
+    "values": [
+      {"decade": "1960s", "count": 11},
+      {"decade": "1970s", "count": 27},
+      {"decade": "1980s", "count": 28},
+      {"decade": "1990s", "count": 39},
+      {"decade": "2000s", "count": 90},
+      {"decade": "2010s", "count": 116},
+      {"decade": "2020s", "count": 6,  "note": "incomplete"}
+    ]
+  },
+
+  "encoding": {
+    "x": {
+      "field": "decade",
+      "type": "ordinal",
+      "title": null,
+      "axis": {"labelAngle": 0, "labelPadding": 8, "labelFontSize": 12}
+    },
+    "y": {
+      "field": "count",
+      "type": "quantitative",
+      "title": "Studios founded",
+      "axis": {"grid": true}
+    }
+  },
+
+  "layer": [
+    {
+      "mark": {"type": "bar", "width": 36, "cornerRadiusEnd": 3},
+      "encoding": {
+        "color": {
+          "condition": {"test": "datum.decade == '2010s'", "value": "#D63838"},
+          "value": "#1A1716"
+        }
+      }
+    },
+    {
+      "mark": {"type": "text", "align": "center", "baseline": "bottom", "dy": -6, "fontSize": 11, "font": "IBM Plex Mono", "fontWeight": 500},
+      "encoding": {
+        "text": {"field": "count"},
+        "color": {
+          "condition": {"test": "datum.decade == '2010s'", "value": "#D63838"},
+          "value": "#1A1716"
+        }
+      }
+    }
+  ]
+}

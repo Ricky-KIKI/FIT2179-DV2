@@ -1,0 +1,142 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Anime studio lineage — founders' previous employers, verified across Wikipedia, ANN, and studio official sites. Each line means a founder of the right-side studio came from the left-side studio.",
+
+  "width": "container",
+  "height": 540,
+  "padding": {"top": 20, "right": 20, "bottom": 20, "left": 20},
+
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {"x1": 100, "y1": 250, "x2": 280, "y2": 130},
+          {"x1": 100, "y1": 250, "x2": 280, "y2": 200},
+          {"x1": 100, "y1": 250, "x2": 280, "y2": 270},
+          {"x1": 100, "y1": 250, "x2": 240, "y2": 460},
+
+          {"x1": 280, "y1": 130, "x2": 480, "y2": 70},
+          {"x1": 280, "y1": 200, "x2": 480, "y2": 130},
+          {"x1": 280, "y1": 340, "x2": 480, "y2": 290},
+          {"x1": 280, "y1": 340, "x2": 480, "y2": 350},
+
+          {"x1": 480, "y1": 290, "x2": 680, "y2": 250},
+          {"x1": 480, "y1": 290, "x2": 680, "y2": 310}
+        ]
+      },
+      "mark": {"type": "rule", "color": "#C8B89E", "strokeWidth": 1.4},
+      "encoding": {
+        "x":  {"field": "x1", "type": "quantitative", "scale": {"domain": [0, 800]}, "axis": null},
+        "y":  {"field": "y1", "type": "quantitative", "scale": {"domain": [500, 0]}, "axis": null},
+        "x2": {"field": "x2"},
+        "y2": {"field": "y2"}
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {"name": "Mushi Production", "x": 100, "y": 250, "level": "ancestor"},
+
+          {"name": "Madhouse",         "x": 280, "y": 130, "level": "first_gen"},
+          {"name": "Sunrise",          "x": 280, "y": 200, "level": "first_gen"},
+          {"name": "Tezuka Pro",       "x": 280, "y": 270, "level": "first_gen"},
+          {"name": "Tatsunoko",        "x": 280, "y": 340, "level": "ancestor"},
+          {"name": "Kyoto Animation",  "x": 240, "y": 460, "level": "active"},
+
+          {"name": "MAPPA",            "x": 480, "y": 70,  "level": "active"},
+          {"name": "Studio Bones",     "x": 480, "y": 130, "level": "active"},
+          {"name": "Production I.G",   "x": 480, "y": 290, "level": "active"},
+          {"name": "Studio Pierrot",   "x": 480, "y": 350, "level": "active"},
+
+          {"name": "WIT Studio",       "x": 680, "y": 250, "level": "active"},
+          {"name": "P.A. Works",       "x": 680, "y": 310, "level": "active"}
+        ]
+      },
+      "mark": {"type": "circle", "size": 700, "stroke": "#FAF7F0", "strokeWidth": 3},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative", "scale": {"domain": [0, 800]}, "axis": null},
+        "y": {"field": "y", "type": "quantitative", "scale": {"domain": [500, 0]}, "axis": null},
+        "color": {
+          "field": "level",
+          "type": "nominal",
+          "scale": {
+            "domain": ["ancestor", "first_gen", "active"],
+            "range": ["#1A1716", "#A88B3D", "#D63838"]
+          },
+          "legend": null
+        },
+        "tooltip": [{"field": "name", "type": "nominal", "title": "Studio"}]
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {"name": "Mushi Production", "x": 100, "y": 235},
+          {"name": "Madhouse",         "x": 280, "y": 115},
+          {"name": "Sunrise",          "x": 280, "y": 185},
+          {"name": "Tezuka Pro",       "x": 280, "y": 255},
+          {"name": "Tatsunoko",        "x": 280, "y": 325},
+          {"name": "Kyoto Animation",  "x": 240, "y": 445},
+          {"name": "MAPPA",            "x": 480, "y": 55},
+          {"name": "Studio Bones",     "x": 480, "y": 115},
+          {"name": "Production I.G",   "x": 480, "y": 275},
+          {"name": "Studio Pierrot",   "x": 480, "y": 335},
+          {"name": "WIT Studio",       "x": 680, "y": 235},
+          {"name": "P.A. Works",       "x": 680, "y": 295}
+        ]
+      },
+      "mark": {"type": "text", "align": "center", "baseline": "bottom", "fontSize": 11, "font": "Manrope", "fontWeight": 600, "color": "#1A1716"},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative", "scale": {"domain": [0, 800]}, "axis": null},
+        "y": {"field": "y", "type": "quantitative", "scale": {"domain": [500, 0]}, "axis": null},
+        "text": {"field": "name"}
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {"year": "1962", "x": 100, "y": 275},
+          {"year": "1972", "x": 280, "y": 155},
+          {"year": "1972", "x": 280, "y": 225},
+          {"year": "1968", "x": 280, "y": 295},
+          {"year": "1962", "x": 280, "y": 365},
+          {"year": "1981", "x": 240, "y": 485},
+          {"year": "2011", "x": 480, "y": 95},
+          {"year": "1998", "x": 480, "y": 155},
+          {"year": "1987", "x": 480, "y": 315},
+          {"year": "1979", "x": 480, "y": 375},
+          {"year": "2012", "x": 680, "y": 275},
+          {"year": "2000", "x": 680, "y": 335}
+        ]
+      },
+      "mark": {"type": "text", "align": "center", "fontSize": 9, "font": "IBM Plex Mono", "color": "#5A524F"},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative", "scale": {"domain": [0, 800]}, "axis": null},
+        "y": {"field": "y", "type": "quantitative", "scale": {"domain": [500, 0]}, "axis": null},
+        "text": {"field": "year"}
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {"header": "ANCESTOR", "x": 100, "y": 510},
+          {"header": "FIRST GENERATION", "x": 280, "y": 510},
+          {"header": "MODERN", "x": 480, "y": 510},
+          {"header": "RECENT", "x": 680, "y": 510}
+        ]
+      },
+      "mark": {"type": "text", "align": "center", "fontSize": 10, "font": "IBM Plex Mono", "fontWeight": 500, "color": "#A88B3D"},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative", "scale": {"domain": [0, 800]}, "axis": null},
+        "y": {"field": "y", "type": "quantitative", "scale": {"domain": [500, 0]}, "axis": null},
+        "text": {"field": "header"}
+      }
+    }
+  ],
+
+  "config": {"view": {"stroke": null}}
+}

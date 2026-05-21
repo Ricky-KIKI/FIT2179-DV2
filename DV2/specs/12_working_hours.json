@@ -1,0 +1,137 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Anime worker monthly hours vs Japan national average — the persistent overwork gap",
+
+  "width": "container",
+  "height": 300,
+  "padding": {"top": 30, "right": 100, "bottom": 30, "left": 50},
+
+  "config": {
+    "view": {"stroke": null},
+    "axis": {
+      "domainColor": "#D9D2C5",
+      "tickColor": "#D9D2C5",
+      "labelColor": "#5A524F",
+      "labelFont": "IBM Plex Mono",
+      "labelFontSize": 11,
+      "titleColor": "#1A1716",
+      "titleFont": "Manrope",
+      "titleFontSize": 12
+    }
+  },
+
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {"year": 2008, "low": 163.5, "high": 273},
+          {"year": 2013, "low": 163.5, "high": 263},
+          {"year": 2017, "low": 163.5, "high": 231},
+          {"year": 2021, "low": 163.5, "high": 198},
+          {"year": 2024, "low": 163.5, "high": 219}
+        ]
+      },
+      "mark": {"type": "area", "color": "#D63838", "opacity": 0.1, "interpolate": "linear"},
+      "encoding": {
+        "x":  {
+          "field": "year", "type": "quantitative",
+          "scale": {"domain": [2007, 2025]},
+          "title": null,
+          "axis": {"format": "d", "labelAngle": 0, "values": [2008, 2013, 2017, 2021, 2024]}
+        },
+        "y":  {
+          "field": "low",  "type": "quantitative",
+          "scale": {"domain": [150, 290]},
+          "title": "Monthly working hours"
+        },
+        "y2": {"field": "high"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"year": 2008, "hours": 273, "series": "Anime industry"},
+          {"year": 2013, "hours": 263, "series": "Anime industry"},
+          {"year": 2017, "hours": 231, "series": "Anime industry"},
+          {"year": 2021, "hours": 198, "series": "Anime industry"},
+          {"year": 2024, "hours": 219, "series": "Anime industry"},
+
+          {"year": 2008, "hours": 163.5, "series": "Japan national average"},
+          {"year": 2024, "hours": 163.5, "series": "Japan national average"}
+        ]
+      },
+      "mark": {"type": "line", "strokeWidth": 2.5, "point": {"filled": true, "size": 70}},
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "title": null,
+          "scale": {"domain": [2007, 2025]},
+          "axis": {"format": "d", "labelAngle": 0, "values": [2008, 2013, 2017, 2021, 2024]}
+        },
+        "y": {
+          "field": "hours",
+          "type": "quantitative",
+          "title": "Monthly working hours",
+          "scale": {"domain": [150, 290]}
+        },
+        "color": {
+          "field": "series", "type": "nominal",
+          "scale": {
+            "domain": ["Anime industry", "Japan national average"],
+            "range": ["#D63838", "#5A524F"]
+          },
+          "legend": null
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"year": 2024, "hours": 219, "label": "Anime industry"}
+        ]
+      },
+      "mark": {
+        "type": "text", "align": "left", "dx": 10, "fontSize": 12,
+        "font": "Manrope", "fontWeight": 600, "color": "#D63838"
+      },
+      "encoding": {
+        "x": {"field": "year", "type": "quantitative", "scale": {"domain": [2007, 2025]}, "axis": null},
+        "y": {"field": "hours", "type": "quantitative", "scale": {"domain": [150, 290]}, "axis": null},
+        "text": {"field": "label"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"year": 2024, "hours": 163.5, "label": "Japan national avg"}
+        ]
+      },
+      "mark": {
+        "type": "text", "align": "left", "dx": 10, "fontSize": 12,
+        "font": "Manrope", "fontWeight": 600, "color": "#5A524F"
+      },
+      "encoding": {
+        "x": {"field": "year", "type": "quantitative", "scale": {"domain": [2007, 2025]}, "axis": null},
+        "y": {"field": "hours", "type": "quantitative", "scale": {"domain": [150, 290]}, "axis": null},
+        "text": {"field": "label"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"year": 2015, "hours": 215, "label": "↕ persistent gap above national average"}
+        ]
+      },
+      "mark": {
+        "type": "text", "align": "center", "fontSize": 10,
+        "font": "IBM Plex Mono", "color": "#D63838", "fontStyle": "italic", "opacity": 0.8
+      },
+      "encoding": {
+        "x": {"field": "year", "type": "quantitative", "scale": {"domain": [2007, 2025]}, "axis": null},
+        "y": {"field": "hours", "type": "quantitative", "scale": {"domain": [150, 290]}, "axis": null},
+        "text": {"field": "label"}
+      }
+    }
+  ]
+}

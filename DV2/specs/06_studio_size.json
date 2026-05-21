@@ -1,0 +1,46 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Anime studios by employee count, TDB 2023 survey of 317 companies",
+
+  "width": "container",
+  "height": 280,
+  "padding": {"top": 10, "right": 30, "bottom": 30, "left": 90},
+
+  "data": {
+    "values": [
+      {"size": "5 or fewer", "count": 93},
+      {"size": "6 to 20",    "count": 98},
+      {"size": "21 to 50",   "count": 60},
+      {"size": "51 to 100",  "count": 38},
+      {"size": "more than 100", "count": 28}
+    ]
+  },
+
+  "encoding": {
+    "y": {
+      "field": "size",
+      "type": "ordinal",
+      "sort": ["5 or fewer", "6 to 20", "21 to 50", "51 to 100", "more than 100"],
+      "title": null,
+      "axis": {"labelPadding": 8, "labelFontSize": 12}
+    },
+    "x": {
+      "field": "count",
+      "type": "quantitative",
+      "title": "Number of studios",
+      "axis": {"grid": true}
+    }
+  },
+
+  "layer": [
+    {
+      "mark": {"type": "bar", "height": 36, "color": "#D63838", "cornerRadiusEnd": 2}
+    },
+    {
+      "mark": {"type": "text", "align": "left", "dx": 6, "fontSize": 11, "font": "IBM Plex Mono", "color": "#1A1716"},
+      "encoding": {
+        "text": {"field": "count"}
+      }
+    }
+  ]
+}
