@@ -6,19 +6,15 @@
   "padding": {"top": 10, "right": 90, "bottom": 30, "left": 50},
 
   "data": {
-    "values": [
-      {"year": 2020, "segment": "Domestic", "value": 1.18},
-      {"year": 2021, "segment": "Domestic", "value": 1.43},
-      {"year": 2022, "segment": "Domestic", "value": 1.47},
-      {"year": 2023, "segment": "Domestic", "value": 1.62},
-      {"year": 2024, "segment": "Domestic", "value": 1.67},
-      {"year": 2020, "segment": "Overseas", "value": 1.24},
-      {"year": 2021, "segment": "Overseas", "value": 1.31},
-      {"year": 2022, "segment": "Overseas", "value": 1.46},
-      {"year": 2023, "segment": "Overseas", "value": 1.72},
-      {"year": 2024, "segment": "Overseas", "value": 2.17}
-    ]
+    "url": "data/01_aja_market_timeseries.csv",
+    "format": {"type": "csv", "parse": {"year": "number", "total_market_jpy_trillion": "number", "domestic_jpy_trillion": "number", "overseas_jpy_trillion": "number"}}
   },
+
+  "transform": [
+    {"filter": "datum.domestic_jpy_trillion != null && datum.domestic_jpy_trillion != ''"},
+    {"fold": ["domestic_jpy_trillion", "overseas_jpy_trillion"], "as": ["segment_raw", "value"]},
+    {"calculate": "datum.segment_raw === 'domestic_jpy_trillion' ? 'Domestic' : 'Overseas'", "as": "segment"}
+  ],
 
   "encoding": {
     "x": {

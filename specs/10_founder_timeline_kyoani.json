@@ -1,0 +1,168 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Founder career migrations \u2014 kyoani highlighted",
+  "width": "container",
+  "height": 240,
+  "padding": {
+    "top": 30,
+    "right": 30,
+    "bottom": 40,
+    "left": 160
+  },
+  "data": {
+    "url": "data/10_founder_timelines.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year_start": "number",
+        "year_end": "number",
+        "segment_order": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "datum.studio === 'kyoani' ? 1 : 0.18",
+      "as": "highlight_opacity"
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "studio",
+      "type": "nominal",
+      "sort": [
+        "kyoani",
+        "pa",
+        "ufo"
+      ],
+      "title": null,
+      "axis": {
+        "labelFont": "Shippori Mincho B1",
+        "labelFontSize": 14,
+        "labelFontWeight": 700,
+        "labelExpr": "datum.value === 'kyoani' ? 'Kyoto Animation' : datum.value === 'pa' ? 'P.A. Works' : 'ufotable'",
+        "domain": false,
+        "ticks": false,
+        "labelPadding": 16,
+        "labelColor": "#1A1716"
+      },
+      "scale": {
+        "padding": 0.5
+      }
+    },
+    "x": {
+      "field": "year_start",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          1968,
+          2027
+        ]
+      },
+      "title": null,
+      "axis": {
+        "format": "d",
+        "tickCount": 8,
+        "labelFont": "IBM Plex Mono",
+        "labelFontSize": 11,
+        "grid": true,
+        "gridDash": [
+          2,
+          4
+        ],
+        "gridOpacity": 0.25,
+        "labelColor": "#5A524F"
+      }
+    }
+  },
+  "layer": [
+    {
+      "transform": [
+        {
+          "filter": "datum.location_type !== 'transition'"
+        }
+      ],
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 18,
+        "strokeCap": "round"
+      },
+      "encoding": {
+        "x2": {
+          "field": "year_end"
+        },
+        "color": {
+          "field": "location_type",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "pre_career",
+              "tokyo",
+              "non_tokyo"
+            ],
+            "range": [
+              "#C8B89E",
+              "#1A1716",
+              "#D63838"
+            ]
+          },
+          "legend": null
+        },
+        "opacity": {
+          "field": "highlight_opacity",
+          "type": "quantitative",
+          "scale": null
+        },
+        "tooltip": [
+          {
+            "field": "location",
+            "type": "nominal",
+            "title": "Workplace"
+          },
+          {
+            "field": "city_label",
+            "type": "nominal",
+            "title": "City"
+          },
+          {
+            "field": "year_start",
+            "type": "quantitative",
+            "title": "From"
+          },
+          {
+            "field": "year_end",
+            "type": "quantitative",
+            "title": "To"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.location_type === 'transition'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "text": "\u25b6",
+        "fontSize": 20,
+        "color": "#A88B3D",
+        "align": "center",
+        "baseline": "middle"
+      },
+      "encoding": {
+        "opacity": {
+          "field": "highlight_opacity",
+          "type": "quantitative",
+          "scale": null
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

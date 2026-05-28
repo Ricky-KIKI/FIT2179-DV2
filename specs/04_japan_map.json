@@ -13,15 +13,15 @@
   "layer": [
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/Ricky-KIKI/FIT2179-DV2/refs/heads/main/data/japan.json",
+        "url": "data/japan.json",
         "format": {"type": "topojson", "feature": "prefectures"}
       },
-      "mark": {"type": "geoshape", "fill": "#E6DFD0", "stroke": "#FAF7F0", "strokeWidth": 0.6}
+      "mark": {"type": "geoshape", "fill": "#D5CCB8", "stroke": "#FAF7F0", "strokeWidth": 0.8}
     },
 
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/Ricky-KIKI/FIT2179-DV2/refs/heads/main/data/japan.json",
+        "url": "data/japan.json",
         "format": {"type": "topojson", "feature": "prefectures"}
       },
       "transform": [
@@ -46,7 +46,7 @@
 
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/Ricky-KIKI/FIT2179-DV2/refs/heads/main/data/japan.json",
+        "url": "data/japan.json",
         "format": {"type": "topojson", "feature": "municipalities"}
       },
       "transform": [

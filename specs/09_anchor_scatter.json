@@ -7,37 +7,20 @@
   "padding": {"top": 30, "right": 30, "bottom": 40, "left": 60},
 
   "data": {
-    "values": [
-      {"name": "Toei Animation",  "founded": 1948, "works": 5, "loc": "Tokyo 23-ku"},
-      {"name": "Mushi Production","founded": 1962, "works": 1, "loc": "Tokyo 23-ku"},
-      {"name": "Sunrise",         "founded": 1972, "works": 3, "loc": "Tokyo 23-ku"},
-      {"name": "Studio Pierrot",  "founded": 1979, "works": 3, "loc": "Tokyo 23-ku"},
-      {"name": "Kyoto Animation", "founded": 1981, "works": 5, "loc": "Kyoto"},
-      {"name": "Studio Ghibli",   "founded": 1985, "works": 5, "loc": "Tokyo (not 23-ku)"},
-      {"name": "Production I.G",  "founded": 1987, "works": 4, "loc": "Tokyo 23-ku"},
-      {"name": "Studio Bones",    "founded": 1998, "works": 3, "loc": "Tokyo 23-ku"},
-      {"name": "ufotable",        "founded": 2000, "works": 4, "loc": "Tokyo 23-ku"},
-      {"name": "P.A. Works",      "founded": 2000, "works": 4, "loc": "Toyama"},
-      {"name": "A-1 Pictures",    "founded": 2005, "works": 4, "loc": "Tokyo 23-ku"},
-      {"name": "WHITE FOX",       "founded": 2007, "works": 2, "loc": "Tokyo 23-ku"},
-      {"name": "MAPPA",           "founded": 2011, "works": 5, "loc": "Tokyo 23-ku"},
-      {"name": "Studio Trigger",  "founded": 2011, "works": 3, "loc": "Tokyo 23-ku"},
-      {"name": "Liden Films",     "founded": 2012, "works": 2, "loc": "Tokyo 23-ku"},
-      {"name": "WIT Studio",      "founded": 2012, "works": 4, "loc": "Tokyo 23-ku"},
-      {"name": "CloverWorks",     "founded": 2018, "works": 3, "loc": "Tokyo 23-ku"}
-    ]
+    "url": "data/06_anchor_studios.csv",
+    "format": {"type": "csv", "parse": {"founded_year": "number", "works_count": "number"}}
   },
 
   "encoding": {
     "x": {
-      "field": "founded",
+      "field": "founded_year",
       "type": "quantitative",
       "title": "Year founded",
       "scale": {"domain": [1945, 2025]},
       "axis": {"format": "d", "grid": true, "tickCount": 8}
     },
     "y": {
-      "field": "works",
+      "field": "works_count",
       "type": "quantitative",
       "title": "Notable works in this collection",
       "scale": {"domain": [0, 6]},
@@ -50,7 +33,7 @@
       "mark": {"type": "circle", "size": 220, "opacity": 0.9, "stroke": "#FAF7F0", "strokeWidth": 2},
       "encoding": {
         "color": {
-          "field": "loc",
+          "field": "location_class",
           "type": "nominal",
           "scale": {
             "domain": ["Tokyo 23-ku", "Tokyo (not 23-ku)", "Kyoto", "Toyama"],
@@ -66,70 +49,70 @@
           }
         },
         "tooltip": [
-          {"field": "name", "type": "nominal", "title": "Studio"},
-          {"field": "founded", "type": "quantitative", "title": "Founded"},
-          {"field": "loc", "type": "nominal", "title": "Location"}
+          {"field": "studio_name", "type": "nominal", "title": "Studio"},
+          {"field": "founded_year", "type": "quantitative", "title": "Founded"},
+          {"field": "location_class", "type": "nominal", "title": "Location"}
         ]
       }
     },
     {
-      "transform": [{"filter": "datum.name == 'Studio Ghibli'"}],
+      "transform": [{"filter": "datum.studio_name == 'Studio Ghibli'"}],
       "mark": {
         "type": "text", "align": "left", "dx": 10, "dy": 14,
         "fontSize": 10, "font": "Manrope", "fontWeight": 600, "color": "#1A1716"
       },
       "encoding": {
-        "text": {"field": "name", "type": "nominal"}
+        "text": {"field": "studio_name", "type": "nominal"}
       }
     },
     {
-      "transform": [{"filter": "datum.name == 'Kyoto Animation'"}],
+      "transform": [{"filter": "datum.studio_name == 'Kyoto Animation'"}],
       "mark": {
         "type": "text", "align": "right", "dx": -10, "dy": 3,
         "fontSize": 10, "font": "Manrope", "fontWeight": 600, "color": "#1A1716"
       },
       "encoding": {
-        "text": {"field": "name", "type": "nominal"}
+        "text": {"field": "studio_name", "type": "nominal"}
       }
     },
     {
-      "transform": [{"filter": "datum.loc != 'Tokyo 23-ku' && datum.name != 'Studio Ghibli' && datum.name != 'P.A. Works' && datum.name != 'Kyoto Animation'"}],
+      "transform": [{"filter": "datum.location_class != 'Tokyo 23-ku' && datum.studio_name != 'Studio Ghibli' && datum.studio_name != 'P.A. Works' && datum.studio_name != 'Kyoto Animation'"}],
       "mark": {
         "type": "text", "align": "left", "dx": 10, "dy": 3,
         "fontSize": 10, "font": "Manrope", "fontWeight": 600, "color": "#1A1716"
       },
       "encoding": {
-        "text": {"field": "name", "type": "nominal"}
+        "text": {"field": "studio_name", "type": "nominal"}
       }
     },
     {
-      "transform": [{"filter": "datum.name == 'P.A. Works'"}],
+      "transform": [{"filter": "datum.studio_name == 'P.A. Works'"}],
       "mark": {
         "type": "text", "align": "left", "dx": 10, "dy": -10,
         "fontSize": 10, "font": "Manrope", "fontWeight": 600, "color": "#1A1716"
       },
       "encoding": {
-        "text": {"field": "name", "type": "nominal"}
+        "text": {"field": "studio_name", "type": "nominal"}
       }
     },
     {
-      "transform": [{"filter": "datum.name == 'Toei Animation' || datum.name == 'Mushi Production' || datum.name == 'CloverWorks'"}],
+      "transform": [{"filter": "datum.studio_name == 'Toei Animation' || datum.studio_name == 'Mushi Production' || datum.studio_name == 'CloverWorks'"}],
       "mark": {
         "type": "text", "align": "left", "dx": 10, "dy": 3,
         "fontSize": 10, "font": "Manrope", "fontWeight": 500, "color": "#5A524F"
       },
       "encoding": {
-        "text": {"field": "name", "type": "nominal"}
+        "text": {"field": "studio_name", "type": "nominal"}
       }
     },
     {
-      "transform": [{"filter": "datum.name == 'MAPPA'"}],
+      "transform": [{"filter": "datum.studio_name == 'MAPPA'"}],
       "mark": {
         "type": "text", "align": "left", "dx": 10, "dy": -10,
         "fontSize": 10, "font": "Manrope", "fontWeight": 500, "color": "#5A524F"
       },
       "encoding": {
-        "text": {"field": "name", "type": "nominal"}
+        "text": {"field": "studio_name", "type": "nominal"}
       }
     }
   ]

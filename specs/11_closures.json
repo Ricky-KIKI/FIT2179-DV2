@@ -1,18 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "description": "Annual anime studio closures, TDB data",
+  "description": "Annual anime studio closures, TDB data — uses 05_studio_closures_timeline.csv",
 
   "width": "container",
   "height": 280,
   "padding": {"top": 10, "right": 30, "bottom": 30, "left": 50},
 
   "data": {
-    "values": [
-      {"year": "2018", "closures": 16, "kind": "record"},
-      {"year": "2023", "closures": 8,  "kind": "full"},
-      {"year": "2024", "closures": 10, "kind": "full"},
-      {"year": "2025", "closures": 8,  "kind": "partial"}
-    ]
+    "url": "data/05_studio_closures_timeline.csv",
+    "format": {"type": "csv", "parse": {"closures_count": "number"}}
   },
 
   "encoding": {
@@ -23,7 +19,7 @@
       "axis": {"labelAngle": 0, "labelPadding": 8}
     },
     "y": {
-      "field": "closures",
+      "field": "closures_count",
       "type": "quantitative",
       "title": "Studios closed",
       "axis": {"grid": true},
@@ -49,31 +45,19 @@
     {
       "mark": {"type": "text", "align": "center", "baseline": "bottom", "dy": -5, "fontSize": 11, "font": "IBM Plex Mono", "color": "#1A1716"},
       "encoding": {
-        "text": {"field": "closures"}
+        "text": {"field": "closures_count"}
       }
     },
     {
-      "comment": "Annotation for 2018 record",
-      "data": {
-        "values": [
-          {"year": "2018", "closures": 16, "note": "all-time record"}
-        ]
-      },
-      "mark": {"type": "text", "align": "center", "baseline": "bottom", "dy": -22, "fontSize": 9, "font": "IBM Plex Mono", "color": "#D63838", "fontStyle": "italic"},
+      "transform": [{"filter": "datum.annotation != null && datum.annotation != ''"}],
+      "mark": {"type": "text", "align": "center", "baseline": "bottom", "dy": -22, "fontSize": 9, "font": "IBM Plex Mono", "fontStyle": "italic"},
       "encoding": {
-        "text": {"field": "note"}
-      }
-    },
-    {
-      "comment": "Annotation for 2025 partial",
-      "data": {
-        "values": [
-          {"year": "2025", "closures": 8, "note": "Jan–Sep only"}
-        ]
-      },
-      "mark": {"type": "text", "align": "center", "baseline": "bottom", "dy": -22, "fontSize": 9, "font": "IBM Plex Mono", "color": "#A88B3D", "fontStyle": "italic"},
-      "encoding": {
-        "text": {"field": "note"}
+        "text": {"field": "annotation"},
+        "color": {
+          "field": "kind", "type": "nominal",
+          "scale": {"domain": ["full", "record", "partial"], "range": ["#1A1716", "#D63838", "#A88B3D"]},
+          "legend": null
+        }
       }
     }
   ]

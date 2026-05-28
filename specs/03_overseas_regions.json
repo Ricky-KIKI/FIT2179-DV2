@@ -7,16 +7,8 @@
   "padding": {"top": 50, "right": 30, "bottom": 50, "left": 30},
 
   "data": {
-    "values": [
-      {"region": "Asia",            "share": 32.1, "order": 1, "x_start":  0.0,  "x_end": 32.1},
-      {"region": "Europe",          "share": 21.2, "order": 2, "x_start": 32.1,  "x_end": 53.3},
-      {"region": "C / S America",   "share": 16.0, "order": 3, "x_start": 53.3,  "x_end": 69.3},
-      {"region": "Oceania",         "share":  7.6, "order": 4, "x_start": 69.3,  "x_end": 76.9},
-      {"region": "Middle East",     "share":  7.3, "order": 5, "x_start": 76.9,  "x_end": 84.2},
-      {"region": "Africa",          "share":  5.5, "order": 6, "x_start": 84.2,  "x_end": 89.7},
-      {"region": "Eastern Europe",  "share":  5.5, "order": 7, "x_start": 89.7,  "x_end": 95.2},
-      {"region": "North America",   "share":  4.7, "order": 8, "x_start": 95.2,  "x_end": 99.9}
-    ]
+    "url": "data/09_overseas_market_by_region.csv",
+    "format": {"type": "csv", "parse": {"share_pct": "number", "order": "number", "x_start": "number", "x_end": "number"}}
   },
 
   "transform": [
@@ -36,20 +28,20 @@
         },
         "tooltip": [
           {"field": "region", "type": "nominal"},
-          {"field": "share", "type": "quantitative", "format": ".1f", "title": "Share (%)"}
+          {"field": "share_pct", "type": "quantitative", "format": ".1f", "title": "Share (%)"}
         ]
       }
     },
     {
-      "transform": [{"filter": "datum.share >= 7"}],
+      "transform": [{"filter": "datum.share_pct >= 7"}],
       "mark": {"type": "text", "color": "#FAF7F0", "fontWeight": 600, "fontSize": 12, "font": "IBM Plex Mono"},
       "encoding": {
         "x": {"field": "x_center", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
-        "text": {"field": "share", "type": "quantitative", "format": ".1f"}
+        "text": {"field": "share_pct", "type": "quantitative", "format": ".1f"}
       }
     },
     {
-      "transform": [{"filter": "datum.share >= 7"}],
+      "transform": [{"filter": "datum.share_pct >= 7"}],
       "mark": {"type": "text", "color": "#1A1716", "fontWeight": 600, "fontSize": 11, "font": "Manrope", "dy": -40, "align": "center"},
       "encoding": {
         "x": {"field": "x_center", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
@@ -69,7 +61,7 @@
       "mark": {"type": "text", "color": "#5A524F", "fontWeight": 500, "fontSize": 9, "font": "IBM Plex Mono", "dy": 54, "align": "center"},
       "encoding": {
         "x": {"field": "x_center", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
-        "text": {"field": "share", "type": "quantitative", "format": ".1f"}
+        "text": {"field": "share_pct", "type": "quantitative", "format": ".1f"}
       }
     },
     {
@@ -85,7 +77,7 @@
       "mark": {"type": "text", "color": "#5A524F", "fontWeight": 500, "fontSize": 9, "font": "IBM Plex Mono", "dy": 76, "align": "center"},
       "encoding": {
         "x": {"field": "x_center", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
-        "text": {"field": "share", "type": "quantitative", "format": ".1f"}
+        "text": {"field": "share_pct", "type": "quantitative", "format": ".1f"}
       }
     },
     {
@@ -101,7 +93,7 @@
       "mark": {"type": "text", "color": "#5A524F", "fontWeight": 500, "fontSize": 9, "font": "IBM Plex Mono", "dy": 54, "align": "center"},
       "encoding": {
         "x": {"field": "x_center", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
-        "text": {"field": "share", "type": "quantitative", "format": ".1f"}
+        "text": {"field": "share_pct", "type": "quantitative", "format": ".1f"}
       }
     }
   ]

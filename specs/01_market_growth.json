@@ -6,16 +6,8 @@
   "padding": {"top": 10, "right": 20, "bottom": 30, "left": 50},
 
   "data": {
-    "values": [
-      {"year": 2009, "total": 1.27, "label": "AJA tracking baseline", "anchor": "left"},
-      {"year": 2014, "total": 1.64, "label": "", "anchor": "left"},
-      {"year": 2019, "total": 2.51, "label": "Pre-pandemic peak", "anchor": "right"},
-      {"year": 2020, "total": 2.43, "label": "COVID dip −3.5%", "anchor": "left"},
-      {"year": 2021, "total": 2.74, "label": "", "anchor": "left"},
-      {"year": 2022, "total": 2.93, "label": "", "anchor": "left"},
-      {"year": 2023, "total": 3.35, "label": "Overseas overtakes (permanently)", "anchor": "right"},
-      {"year": 2024, "total": 3.84, "label": "$25B record", "anchor": "right"}
-    ]
+    "url": "data/01_aja_market_timeseries.csv",
+    "format": {"type": "csv", "parse": {"year": "number", "total_market_jpy_trillion": "number", "domestic_jpy_trillion": "number", "overseas_jpy_trillion": "number"}}
   },
 
   "encoding": {
@@ -26,7 +18,7 @@
       "axis": {"labelAngle": 0, "labelPadding": 8}
     },
     "y": {
-      "field": "total",
+      "field": "total_market_jpy_trillion",
       "type": "quantitative",
       "title": "Trillion yen",
       "scale": {"domain": [0, 4.5]}
@@ -44,19 +36,19 @@
       }
     },
     {
-      "transform": [{"filter": "datum.label != '' && datum.anchor == 'left'"}],
+      "transform": [{"filter": "datum.label != null && datum.label != '' && datum.anchor == 'left'"}],
       "mark": {"type": "text", "align": "left", "baseline": "bottom", "dx": 8, "dy": -10, "fontSize": 10, "font": "IBM Plex Mono", "color": "#1A1716"},
       "encoding": {
         "text": {"field": "label"},
-        "y": {"field": "total", "type": "quantitative"}
+        "y": {"field": "total_market_jpy_trillion", "type": "quantitative"}
       }
     },
     {
-      "transform": [{"filter": "datum.label != '' && datum.anchor == 'right'"}],
+      "transform": [{"filter": "datum.label != null && datum.label != '' && datum.anchor == 'right'"}],
       "mark": {"type": "text", "align": "right", "baseline": "bottom", "dx": -8, "dy": -10, "fontSize": 10, "font": "IBM Plex Mono", "color": "#1A1716"},
       "encoding": {
         "text": {"field": "label"},
-        "y": {"field": "total", "type": "quantitative"}
+        "y": {"field": "total_market_jpy_trillion", "type": "quantitative"}
       }
     }
   ]

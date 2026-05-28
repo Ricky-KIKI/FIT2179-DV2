@@ -1,0 +1,11 @@
+parent,child,x1,y1,x2,y2,relation_type,note
+Mushi Production,Madhouse,100,250,280,130,ex-staff,Maruyama + Dezaki left Mushi
+Mushi Production,Sunrise,100,250,280,200,ex-staff,Multiple ex-Mushi founders
+Mushi Production,Tezuka Pro,100,250,280,270,founder,Tezuka himself
+Mushi Production,Kyoto Animation,100,250,240,460,ex-staff,Yoko Hatta painted at Mushi
+Madhouse,MAPPA,280,130,480,70,ex-staff,Maruyama left 2011
+Sunrise,Studio Bones,280,200,480,130,ex-staff,Minami + Osaka + Kawamoto left
+Tatsunoko,Production I.G,280,340,480,290,ex-staff,Ishikawa + Goto co-founded
+Tatsunoko,Studio Pierrot,280,340,480,350,ex-staff,Nunokawa left Tatsunoko
+Production I.G,WIT Studio,480,290,680,250,subsidiary,Co-founded as IG Port subsidiary 2012
+Production I.G,P.A. Works,480,290,680,310,ex-staff,Horikawa left I.G

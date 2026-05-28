@@ -3,31 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Animation Capital — How 622 Studios Built a $25B Industry from Two Tokyo Neighbourhoods</title>
+  <title>The Animation Capital — How 622 Studios Built a ¥3.84 Trillion Industry from Two Tokyo Neighbourhoods</title>
 
+  <!-- Google Fonts: Shippori Mincho (display) + Manrope (body) + IBM Plex Mono (data) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Manrope:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
+  <!-- Vega-Lite (chart library) loaded from CDN -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
   <style>
+    /* ---------- DESIGN TOKENS ---------- */
     :root {
-      --cream: #FAF7F0;          /* page background — warm off-white */
-      --ink: #1A1716;            /* primary text */
-      --ink-soft: #5A524F;       /* secondary text */
-      --line: #D9D2C5;           /* hairlines and dividers */
-      --vermillion: #D63838;     /* 朱色 - accent for highlights */
-      --gold: #A88B3D;           /* secondary accent */
-      --paper: #F2EDDF;          /* card / chart background */
+      --cream: #FAF7F0;          
+      --ink: #1A1716;            
+      --ink-soft: #5A524F;      
+      --line: #D9D2C5;           
+      --vermillion: #D63838;     
+      --gold: #A88B3D;           
+      --paper: #F2EDDF;         
 
       --serif: 'Shippori Mincho B1', 'Noto Serif JP', Georgia, serif;
       --sans: 'Manrope', system-ui, sans-serif;
       --mono: 'IBM Plex Mono', monospace;
 
-      --content-width: 960px;     /* max width — keeps readable line length */
+      --content-width: 960px;     
       --gutter: 32px;
     }
 
@@ -79,12 +82,14 @@
     a { color: var(--vermillion); text-decoration: underline; text-underline-offset: 3px; }
     a:hover { background: var(--vermillion); color: var(--cream); }
 
+    /* numbers in body text */
     .num {
       font-family: var(--mono);
       font-weight: 500;
       color: var(--ink);
     }
 
+    /* ---------- HERO SECTION ---------- */
     .hero {
       padding: 8rem 0 4rem;
       border-bottom: 1px solid var(--line);
@@ -116,6 +121,7 @@
     }
     .hero .byline strong { color: var(--ink); font-weight: 500; }
 
+    /* ---------- HERO BIG NUMBERS ---------- */
     .hero-numbers {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -141,6 +147,7 @@
       line-height: 1.4;
     }
 
+    /* ---------- CHAPTER MARKERS ---------- */
     .chapter-mark {
       margin-top: 6rem;
       margin-bottom: 1rem;
@@ -165,6 +172,7 @@
       color: var(--ink-soft);
     }
 
+    /* ---------- CHART CONTAINERS ---------- */
     .chart {
       margin: 2.5rem 0 1rem;
       padding: 1.5rem;
@@ -196,6 +204,7 @@
     }
     .chart-embed { width: 100%; min-height: 300px; }
 
+    /* ---------- ANNOTATED PULLQUOTES ---------- */
     .pull {
       margin: 3rem 0;
       padding: 2rem 0 2rem 2rem;
@@ -258,8 +267,33 @@
       line-height: 1.45;
       color: var(--ink);
     }
+    .studio-card .work-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      padding: 0.18rem 0;
+      font-size: 0.82rem;
+      line-height: 1.35;
+    }
+    .studio-card .work-dot {
+      flex-shrink: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      transform: translateY(-1px);
+    }
+    .studio-card .work-jp {
+      font-family: var(--serif);
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .studio-card .work-en {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      color: var(--ink-soft);
+    }
 
-    /* ---------- Custom Viz4 ---------- */
+    /* ---------- Custom Viz 4 ---------- */
     .whyhere-panel {
       margin: 2rem 0;
       border: 1px solid var(--line);
@@ -347,45 +381,41 @@
 
 <body>
 
-<!-- ============================================ -->
-<!-- HERO SECTION                                 -->
-<!-- ============================================ -->
+<!-- HERO SECTION -->
 <section class="hero wrap">
   <div class="eyebrow">FIT2179 · Data Visualisation 2 · Semester 1, 2026</div>
   <h1 class="title">The Animation<br>Capital</h1>
   <p class="standfirst">
-    Japan's anime industry sold <span class="num">$25 billion</span> worth of dreams in 2024.
+    Japan's anime industry sold <span class="num">¥3.84 trillion</span> (≈ $25 billion) worth of dreams in 2024.
     Most of them were drawn within walking distance of one Tokyo train line.
   </p>
   <div class="byline">
-    By <strong> Ruiqi Zhou </strong> 
+    By <strong>[Ruiqi Zhou, 36554006]</strong>
   </div>
 
   <div class="hero-numbers">
     <div class="hero-num">
       <div class="figure">¥3.84T</div>
-      <div class="label">Total industry value, 2024<br>(<strong>+14.8%</strong> YoY)</div>
+      <div class="label">Total industry value, 2024<br><strong>(+14.8% YoY)</strong></div>
     </div>
     <div class="hero-num">
       <div class="figure">56%</div>
-      <div class="label">Revenue from overseas in 2024<br>(was <strong>49%</strong> in 2023)</div>
+      <div class="label">Revenue from overseas in 2024<br><strong>(was 52% in 2023, 50% in 2022)</strong></div>
     </div>
     <div class="hero-num">
       <div class="figure">241</div>
-      <div class="label">Studios in two adjacent Tokyo wards<br>(out of <strong>622</strong> nationally, 2016)</div>
+      <div class="label">Studios in two adjacent Tokyo wards<br><strong>(out of 622 nationally, 2016)</strong></div>
     </div>
   </div>
 </section>
 
 
-<!-- ============================================ -->
-<!-- INTRO / FRAMING                              -->
-<!-- ============================================ -->
+<!-- INTRO -->
 <section class="wrap">
   <p style="margin-top: 4rem; font-size: 1.1rem; line-height: 1.7;">
     Sometime tonight, somewhere in the world, a teenager will click play on a Japanese cartoon and forget where they are
-    for twenty-three minutes. That moment is part of an export industry now larger than Japan's steel industry —
-    one whose international revenue passed domestic revenue for the first time in 2020 and never went back.
+    for twenty-three minutes. That moment is part of an export industry whose overseas revenue
+    first passed domestic revenue briefly in 2020, then permanently in 2023.
   </p>
   <p style="font-size: 1.1rem; line-height: 1.7;">
     But the people who drew those twenty-three minutes are clustered so densely in two Tokyo neighbourhoods
@@ -406,18 +436,18 @@
   <p style="margin-top: 2rem;">
     The numbers below come from the Association of Japanese Animations (AJA), which has tracked the industry annually
     since 2002. The pattern is the same every year: domestic Japan grows slowly, overseas grows fast, and the overseas
-    share keeps climbing. In 2024 overseas alone hit ¥2.17 trillion ($14.25B).
+    share keeps climbing. In 2024 overseas alone hit ¥2.17 trillion (≈ $14.25 billion).
   </p>
 
-  <!--VIZ 1.1 -->
+  <!-- VIZ 1.1  -->
   <div class="chart">
-    <div class="chart-title">A $25-billion industry, decade by decade</div>
+    <div class="chart-title">A ¥3.84-trillion industry, decade by decade</div>
     <div class="chart-subtitle">Total anime industry market value in trillion yen. Includes merchandise, music, streaming, and live events.</div>
     <div id="viz_01" class="chart-embed"></div>
     <div class="chart-source">Source: AJA Anime Industry Reports 2014–2025 · Plotted years shown have direct verified citation</div>
   </div>
 
-  <!--VIZ 1.2 -->
+  <!-- VIZ 1.2  -->
   <div class="chart">
     <div class="chart-title">The overseas crossover</div>
     <div class="chart-subtitle">Domestic sales stayed nearly flat from 2020 onward. The growth is entirely overseas. The two lines crossed in 2020, recrossed in 2021–2022, and crossed permanently in 2023.</div>
@@ -430,10 +460,10 @@
     <span class="pull-attr">Masahiro Hasegawa, AJA Report 2025 lead author, at TIFFCOM October 2025</span>
   </div>
 
-  <!--VIZ 1.3-->
+  <!-- VIZ 1.3  -->
   <div class="chart">
     <div class="chart-title">Where the overseas money comes from</div>
-    <div class="chart-subtitle">Share of overseas market by region, AJA 2022 contract data. North America's share by contracts is small but its streaming revenue dominates: $2.2B (41% of global anime streaming), per Parrot Analytics 2023.</div>
+    <div class="chart-subtitle">Share of overseas market by region, AJA 2022 contract data. North America's share by contracts is small but its streaming revenue dominates: $2.2 billion (41% of global anime streaming), per Parrot Analytics 2023.</div>
     <div id="viz_03" class="chart-embed"></div>
     <div class="chart-source">Source: AJA Anime Industry Report 2023 · Streaming figures via Parrot Analytics 2023</div>
   </div>
@@ -441,7 +471,7 @@
 </section>
 
 
-<!--CHAPTER 2-->
+<!-- CHAPTER 2 -->
 <section class="wrap">
 
   <div class="chapter-mark">
@@ -458,31 +488,31 @@
 
   <p>
     Looked at another way: <span class="num">38.7%</span> of Japan's entire animation industry is packed into two wards
-    that together cover less land area than the Brisbane CBD. The pattern is so dense that
+    that together cover about 82 km² — slightly larger than Manhattan. The pattern is so dense that
     if you stand at Ogikubo station and walk for twenty minutes in any direction, you will pass studios
-    that made works you know — <em>Demon Slayer</em>, <em>Attack on Titan</em>, <em>Jujutsu Kaisen</em>.
+    that made works you know — <em>Jujutsu Kaisen</em>, <em>Re:Zero</em>, <em>My Hero Academia</em>.
   </p>
 
-  <!--VIZ 2.1-->
+  <!-- VIZ 2.1 -->
   <div class="chart">
     <div class="chart-title">The whole industry, basically one prefecture</div>
     <div class="chart-subtitle">Anime production companies by location, 2016 AJA survey. Tokyo's 542 studios dwarf every other prefecture combined. Only three non-Tokyo prefectures host nationally significant studios.</div>
     <div id="viz_04" class="chart-embed" style="min-height: 540px;"></div>
-    <div class="chart-source">Source: AJA 立地調査 2016 (Anime Industry Report 2016) · Map: dataofjapan/land</div>
+    <div class="chart-source">Source: AJA 立地調査 2016 (Anime Industry Report 2016) · Map: jpn-atlas npm package, derived from 国土地理院 Global Map Japan 2016</div>
   </div>
 
-  <!--VIZ 2.21 -->
+  <!-- VIZ 2.2 -->
   <div class="chart">
     <div class="chart-title">Inside Tokyo: the anime corridor</div>
     <div class="chart-subtitle">Studios cluster along three western train lines — the JR Chuo Line, Seibu Shinjuku Line, and Seibu Ikebukuro Line. Within those lines, Suginami (138 studios) and Nerima (103) tower over every other ward. Markers locate the most internationally visible studios.</div>
     <div id="viz_05" class="chart-embed" style="min-height: 500px;"></div>
-    <div class="chart-source">Source: AJA 2016 · Anchor studio coordinates from company official sites (approximate; verify with Nominatim for production)</div>
+    <div class="chart-source">Source: AJA 2016 (studio counts) · Map: jpn-atlas (municipality boundaries) · Anchor studio coordinates approximated to ward centroids (see README for limitations)</div>
   </div>
 
-  <!--VIZ 2.3-->
+  <!-- VIZ 2.3 -->
   <div class="chart">
     <div class="chart-title">Most studios are tiny</div>
-    <div class="chart-subtitle">Anime studios by employee count, Teikoku Databank 2023 survey of 317 companies. Two-thirds have fewer than 20 employees. The "MAPPA" or "ufotable" you imagine — a 200-person operation — is in the smallest 9%.</div>
+    <div class="chart-subtitle">Anime studios by employee count, Teikoku Databank 2023 survey of 317 companies. Around <strong>60%</strong> have fewer than 20 employees. The "MAPPA" or "ufotable" you imagine — a 200-person operation — is in the smallest 9%.</div>
     <div id="viz_06" class="chart-embed"></div>
     <div class="chart-source">Source: Teikoku Databank Anime Production Market Report 2024 (data year: 2023)</div>
   </div>
@@ -490,7 +520,7 @@
 </section>
 
 
-<!-- CHAPTER 3: THE LINEAGE-->
+<!-- CHAPTER 3 -->
 <section class="wrap">
 
   <div class="chapter-mark">
@@ -506,7 +536,7 @@
     Almost every studio that matters today is two or three founders deep into Mushi.
   </p>
 
-  <!--VIZ 3.1 -->
+  <!-- VIZ 3.1 -->
   <div class="chart">
     <div class="chart-title">A late-arriving industry</div>
     <div class="chart-subtitle">Anime studios by decade of founding, TDB 2023 survey. Most studios standing today are younger than the people watching them — 116 of 317 were founded in the 2010s alone.</div>
@@ -514,7 +544,7 @@
     <div class="chart-source">Source: Teikoku Databank 2024 report (data year 2023)</div>
   </div>
 
-  <!--VIZ 3.2-->
+  <!-- VIZ 3.2 -->
   <div class="chart">
     <div class="chart-title">The Mushi Production family tree</div>
     <div class="chart-subtitle">Lineage of major active studios traced through founders. Each line shows "founder previously worked at." Mushi Production (Osamu Tezuka's 1962 studio) is the great ancestor of nearly every studio on the right.</div>
@@ -522,7 +552,7 @@
     <div class="chart-source">Source: Lineage assembled from Wikipedia studio articles and Grokipedia for each studio · Hand-curated by author</div>
   </div>
 
-  <!--VIZ 3.3-->
+  <!-- VIZ 3.3 -->
   <h3 style="margin-top: 3rem;">Studios you have heard of, located</h3>
   <p>The most internationally visible studios. Red names are outside Tokyo's 23 special wards.</p>
   <div class="studio-grid">
@@ -530,59 +560,94 @@
       <div class="name">MAPPA</div>
       <div class="loc">Suginami, Tokyo</div>
       <div class="year">Founded 2011</div>
-      <div class="works">Jujutsu Kaisen · Chainsaw Man · Attack on Titan Final · Vinland Saga S2</div>
+      <div class="works">
+        <div class="work-item"><span class="work-dot" style="background:#6B2D85;"></span><span><span class="work-jp">「呪術廻戦」</span> <span class="work-en">Jujutsu Kaisen</span></span></div>
+        <div class="work-item"><span class="work-dot" style="background:#C0392B;"></span><span><span class="work-jp">「チェンソーマン」</span> <span class="work-en">Chainsaw Man</span></span></div>
+        <div class="work-item"><span class="work-dot" style="background:#8C7438;"></span><span><span class="work-jp">「進撃の巨人」Final</span> <span class="work-en">Attack on Titan</span></span></div>
+        <div class="work-item"><span class="work-dot" style="background:#3D6B5A;"></span><span><span class="work-jp">「ヴィンランド・サガ」S2</span> <span class="work-en">Vinland Saga</span></span></div>
+      </div>
     </div>
     <div class="studio-card">
       <div class="name">ufotable</div>
       <div class="loc">Nakano, Tokyo</div>
       <div class="year">Founded 2000</div>
-      <div class="works">Demon Slayer · Fate/Zero · Fate/stay night UBW</div>
+      <div class="works">
+        <div class="work-item"><span class="work-dot" style="background:#2C8B5F;"></span><span><span class="work-jp">「鬼滅の刃」</span> <span class="work-en">Demon Slayer</span></span></div>
+        <div class="work-item"><span class="work-dot" style="background:#1A3A6B;"></span><span><span class="work-jp">「Fate/Zero」</span></span></div>
+        <div class="work-item"><span class="work-dot" style="background:#5A1818;"></span><span><span class="work-jp">「Fate/stay night」</span> <span class="work-en">UBW</span></span></div>
+      </div>
     </div>
     <div class="studio-card">
       <div class="name">Toei Animation</div>
       <div class="loc">Nerima (Oizumi), Tokyo</div>
       <div class="year">Founded 1948</div>
-      <div class="works">One Piece · Dragon Ball · Sailor Moon · the 1958 first color anime feature</div>
+      <div class="works">
+        <div class="work-item"><span class="work-dot" style="background:#D9534F;"></span><span><span class="work-jp">「ONE PIECE」</span> <span class="work-en">One Piece</span></span></div>
+        <div class="work-item"><span class="work-dot" style="background:#E67E22;"></span><span><span class="work-jp">「ドラゴンボール」</span> <span class="work-en">Dragon Ball</span></span></div>
+        <div class="work-item"><span class="work-dot" style="background:#D946A1;"></span><span><span class="work-jp">「美少女戦士セーラームーン」</span> <span class="work-en">Sailor Moon</span></span></div>
+        <div class="work-item"><span class="work-dot" style="background:#C8B89E;"></span><span><span class="work-jp">「白蛇伝」(1958)</span> <span class="work-en">first color anime feature</span></span></div>
+      </div>
     </div>
     <div class="studio-card">
       <div class="name">Studio Bones</div>
       <div class="loc">Suginami (Igusa), Tokyo</div>
       <div class="year">Founded 1998</div>
-      <div class="works">Fullmetal Alchemist: Brotherhood · My Hero Academia</div>
+      <div class="works">
+        <div class="work-item"><span class="work-dot" style="background:#B8862B;"></span><span><span class="work-jp">「鋼の錬金術師」FA</span> <span class="work-en">Fullmetal Alchemist: Brotherhood</span></span></div>
+        <div class="work-item"><span class="work-dot" style="background:#2D7B3A;"></span><span><span class="work-jp">「僕のヒーローアカデミア」</span> <span class="work-en">My Hero Academia</span></span></div>
+      </div>
     </div>
     <div class="studio-card">
       <div class="name">Sunrise / Bandai Namco</div>
       <div class="loc">Suginami (Kami-Igusa), Tokyo</div>
       <div class="year">Founded 1972</div>
-      <div class="works">Mobile Suit Gundam · Cowboy Bebop</div>
+      <div class="works">
+        <div class="work-item"><span class="work-dot" style="background:#E63946;"></span><span><span class="work-jp">「機動戦士ガンダム」</span> <span class="work-en">Mobile Suit Gundam</span></span></div>
+        <div class="work-item"><span class="work-dot" style="background:#1A1716;"></span><span><span class="work-jp">「カウボーイビバップ」</span> <span class="work-en">Cowboy Bebop</span></span></div>
+      </div>
     </div>
     <div class="studio-card">
       <div class="name">Mushi Production</div>
       <div class="loc">Nerima, Tokyo</div>
       <div class="year">Founded 1962</div>
-      <div class="works">Astro Boy (1963, the first anime TV series). Tezuka's studio — ancestor of many.</div>
+      <div class="works">
+        <div class="work-item"><span class="work-dot" style="background:#3D4A6B;"></span><span><span class="work-jp">「鉄腕アトム」(1963)</span> <span class="work-en">Astro Boy — first anime TV series</span></span></div>
+        <div class="work-item" style="color:var(--ink-soft); font-style:italic; font-size:0.78rem; padding-top:0.4rem;">Tezuka's studio — ancestor of many.</div>
+      </div>
     </div>
     <div class="studio-card">
       <div class="name non-tokyo">Studio Ghibli</div>
       <div class="loc">Koganei, Tokyo (not 23-ku)</div>
       <div class="year">Founded 1985</div>
-      <div class="works">Spirited Away · Princess Mononoke · The Boy and the Heron</div>
+      <div class="works">
+        <div class="work-item"><span class="work-dot" style="background:#7A1E1E;"></span><span><span class="work-jp">「千と千尋の神隠し」</span> <span class="work-en">Spirited Away</span></span></div>
+        <div class="work-item"><span class="work-dot" style="background:#3D5C2E;"></span><span><span class="work-jp">「もののけ姫」</span> <span class="work-en">Princess Mononoke</span></span></div>
+        <div class="work-item"><span class="work-dot" style="background:#4A6B8C;"></span><span><span class="work-jp">「君たちはどう生きるか」</span> <span class="work-en">The Boy and the Heron</span></span></div>
+      </div>
     </div>
     <div class="studio-card">
       <div class="name non-tokyo">Kyoto Animation</div>
       <div class="loc">Uji, Kyoto Prefecture</div>
       <div class="year">Founded 1981</div>
-      <div class="works">K-On! · Violet Evergarden · A Silent Voice</div>
+      <div class="works">
+        <div class="work-item"><span class="work-dot" style="background:#E8A4B8;"></span><span><span class="work-jp">「けいおん!」</span> <span class="work-en">K-On!</span></span></div>
+        <div class="work-item"><span class="work-dot" style="background:#C5A572;"></span><span><span class="work-jp">「ヴァイオレット・エヴァーガーデン」</span> <span class="work-en">Violet Evergarden</span></span></div>
+        <div class="work-item"><span class="work-dot" style="background:#6B8C7A;"></span><span><span class="work-jp">「聲の形」</span> <span class="work-en">A Silent Voice</span></span></div>
+      </div>
     </div>
     <div class="studio-card">
       <div class="name non-tokyo">P.A. Works</div>
       <div class="loc">Nanto, Toyama Prefecture</div>
       <div class="year">Founded 2000</div>
-      <div class="works">Shirobako · Hanasaku Iroha · Angel Beats!</div>
+      <div class="works">
+        <div class="work-item"><span class="work-dot" style="background:#E8A4B8;"></span><span><span class="work-jp">「SHIROBAKO」</span></span></div>
+        <div class="work-item"><span class="work-dot" style="background:#D4A574;"></span><span><span class="work-jp">「花咲くいろは」</span> <span class="work-en">Hanasaku Iroha</span></span></div>
+        <div class="work-item"><span class="work-dot" style="background:#9BB3D9;"></span><span><span class="work-jp">「Angel Beats!」</span></span></div>
+      </div>
     </div>
   </div>
 
-  <!--VIZ 3.4-->
+  <!-- VIZ 3.4 -->
   <div class="chart">
     <div class="chart-title">Two clusters: the legacy houses and the 2010s boom</div>
     <div class="chart-subtitle">Each dot is one studio in the anchor set. Position shows founding year and number of works in our collection. Red dots are non-Tokyo or non-23-ku studios — the rare outliers.</div>
@@ -602,40 +667,40 @@
   </div>
 
   <p style="margin-top: 2rem;">
-    Of the 622 studios in the AJA 2016 count, roughly 80 — only <span class="num">12.9%</span> — were headquartered
-    outside Tokyo. Almost all the ones outside Tokyo that anyone has heard of can be listed in a single paragraph.
-    What follows are the four most prominent, and why each one ended up where it did.
+    Of the 622 studios in the AJA 2016 count, just <span class="num">80</span> — about 13% —
+    are headquartered outside Tokyo. Of those, three matter at international scale.
+    Each one ended up where it did because of one person's biography, traced here from
+    the year their founder first took an industry job to the year they founded the studio elsewhere.
   </p>
 
-  <!--VIZ 4.1-->
+  <!-- VIZ 10 -->
   <div class="chart">
+    <div class="chart-title">Three founders, one move each</div>
+    <div class="chart-subtitle">Tap a studio to highlight that founder's career path. 
+      <span style="color: var(--ink); font-weight: 600;">Black</span> bars are Tokyo employers.
+      <span style="color: var(--vermillion); font-weight: 600;">Red</span> bars are the founder's own non-Tokyo studio. 
+      <span style="color: var(--gold); font-weight: 600;">Gold Arrow</span> marks the move out of Tokyo.
+    </div>
 
-
-
-  </div>
-
-  <!--VIZ 4.2-->
-  <h3 style="margin-top: 3rem;">Why here, not Tokyo?</h3>
-  <p>Each of these studios chose its location for a specific reason. Click a name to read it.</p>
-
-  <div class="whyhere-panel">
-    <div class="whyhere-tabs">
+    <div class="whyhere-tabs" style="margin: 1.5rem 0 0;">
       <button class="whyhere-tab active" data-studio="kyoani">
-        <strong>Kyoto Animation</strong>Uji, Kyoto
+        <strong>Kyoto Animation</strong>Uji, Kyoto · 1981
       </button>
       <button class="whyhere-tab" data-studio="pa">
-        <strong>P.A. Works</strong>Nanto, Toyama
+        <strong>P.A. Works</strong>Nanto, Toyama · 2000
       </button>
       <button class="whyhere-tab" data-studio="ufo">
-        <strong>ufotable Tokushima</strong>Tokushima
-      </button>
-      <button class="whyhere-tab" data-studio="ghibli">
-        <strong>Studio Ghibli</strong>Koganei, Tokyo
+        <strong>ufotable Tokushima</strong>Tokushima · 2009
       </button>
     </div>
-    <div class="whyhere-content" id="whyhere-content">
+
+    <div id="viz_10" class="chart-embed" style="min-height: 280px; margin-top: 0;"></div>
+
+    <div class="whyhere-content" id="whyhere-story">
       <!-- Filled by JavaScript -->
     </div>
+
+    <div class="chart-source">Source: Wikipedia, Japan Times 2016 interview, Sakuga Blog, AniDB, MyAnimeList company pages · ufotable founder career dates approximate (1990s-2000)</div>
   </div>
 
 </section>
@@ -650,10 +715,11 @@
   </div>
 
   <p style="margin-top: 2rem;">
-    The story would be cleaner if it ended at "Japan built a $25 billion industry."
-    It doesn't. The production studios — the ones doing the drawing — receive only <span class="num">13%</span>
-    of that $25 billion. The rest goes to production committees: TV networks, publishers, and toy companies
-    who fund anime in exchange for the IP rights.
+    The story would be cleaner if it ended at "Japan built a ¥3.84-trillion industry."
+    It doesn't. In 2023, the most recent year with breakdown data, the production studios —
+    the ones doing the drawing — received only ¥427.2 billion: just <span class="num">13%</span>
+    of the ¥3.35-trillion total. The rest goes to production committees: TV networks, publishers,
+    and toy companies who fund anime in exchange for the IP rights.
   </p>
 
   <p>
@@ -661,7 +727,7 @@
     the third consecutive annual increase, on pace to match the all-time worst year of 2018.
   </p>
 
-  <!--5.1 -->
+  <!-- VIZ 5.1 -->
   <div class="chart">
     <div class="chart-title">Closures are rising again</div>
     <div class="chart-subtitle">Annual studio closures and bankruptcies tracked by Teikoku Databank: 2018's all-time high of 16, then a three-year climb 2023–2025. Earlier years not shown (TDB has surveyed since 2000 but year-totals before 2018 are difficult to source publicly).</div>
@@ -669,7 +735,7 @@
     <div class="chart-source">Source: Teikoku Databank reports 2018, 2023, 2024, 2025 (via Anime News Network)</div>
   </div>
 
-  <!--5.2 -->
+  <!-- VIZ 5.2 -->
   <div class="chart">
     <div class="chart-title">Hours have come down. Wages haven't matched.</div>
     <div class="chart-subtitle">Monthly working hours of anime industry workers, from JAniCA's surveys. Hours have dropped from 273 (2008) to about 220 (2024) — still well above Japan's national average of 163.5.</div>
@@ -680,44 +746,40 @@
 </section>
 
 
-<!-- ============================================ -->
-<!-- FOOTER / METADATA                            -->
-<!-- ============================================ -->
+<!-- FOOTER / METADATA -->
 <footer class="wrap">
 
   <div class="meta-grid">
     <div>
       <h3>About this piece</h3>
       <p style="font-size: 0.82rem;">
-        A student visualisation for FIT2179 Data Visualisation 2, Semester 1 2026. 
+        For FIT2179 Data Visualisation 2, Semester 1 2026.
+
       </p>
       <p style="font-size: 0.82rem;">
-        <strong>Author:</strong> [Ruiqi Zhou]<br>
-        <strong>Repository:</strong> <a href="https://github.com/Ricky-KIKI/FIT2179-DV2" target="_blank">https://github.com/Ricky-KIKI/FIT2179-DV2</a>
+        <strong>Author:</strong> [Ruiqi Zhou, 36554006]<br>
       </p>
     </div>
-
 
     <div>
-      <h3>AI acknowledgement</h3>
-      <p style="font-size: 0.82rem;">
-        AI was used as a research, locating primary data sources, 
-        text polishing tool, and assisting tool for CSS/HTML.
-      </p>
+      <h3>Primary data sources</h3>
+      <ul>
+        <li>· AJA Anime Industry Reports 2014–2025 (<a href="https://aja.gr.jp/english/japan-anime-data">aja.gr.jp</a>)</li>
+        <li>· Teikoku Databank Anime Production Market Reports</li>
+        <li>· JAniCA working condition surveys</li>
+        <li>· NAFCA 2024 anime worker survey</li>
+        <li>· Wikipedia for studio addresses and founding dates</li>
+      </ul>
     </div>
   </div>
-
-  <p style="margin-top: 4rem; font-size: 0.75rem; color: var(--ink-soft); font-family: var(--mono); letter-spacing: 0.04em;">
-    [Ruiqi Zhou] ·  FIT2179 · Data Visualisation 2 · Semester 1, 2026
-  </p>
 
 </footer>
 
 
-<!-- ============================================ -->
-<!-- JAVASCRIPT: load all charts                  -->
-<!-- ============================================ -->
+<!-- JAVASCRIPT -->
 <script>
+
+
   const charts = [
     { id: 'viz_01', file: 'specs/01_market_growth.json' },
     { id: 'viz_02', file: 'specs/02_domestic_vs_overseas.json' },
@@ -728,13 +790,13 @@
     { id: 'viz_07', file: 'specs/07_founding_decades.json' },
     { id: 'viz_08', file: 'specs/08_lineage_network.json' },
     { id: 'viz_09', file: 'specs/09_anchor_scatter.json' },
-    { id: 'viz_10', file: 'specs/10_non_tokyo_map.json' },
+    { id: 'viz_10', file: 'specs/10_founder_timeline_kyoani.json' },
     { id: 'viz_11', file: 'specs/11_closures.json' },
     { id: 'viz_12', file: 'specs/12_working_hours.json' }
   ];
 
   const embedOptions = {
-    actions: false,       
+    actions: false,        
     renderer: 'svg',       
     config: {
       background: 'transparent',
@@ -784,69 +846,51 @@
   });
 
 
-  const whyHereData = {
+  // ---------- Custom Viz 4) ----------
+  const founderStories = {
     kyoani: {
-      quote: "Founded by husband-and-wife Yoko and Hideaki Hatta in 1981, Kyoto Animation began as a small in-between subcontractor for Tokyo-based companies — operated, at first, partly by local housewives in Uji.",
-      facts: [
-        ["FOUNDED", "1981 (incorporated 1985)"],
-        ["FOUNDER", "Hideaki Hatta & Yoko Hatta"],
-        ["WHY HERE", "Hatta's family was in Kyoto. They started by taking subcontracted work from Tokyo studios remotely — a model that worked because animation can be mailed."],
-        ["NOTABLE", "Unique in industry: salaried in-house animators, not freelance per-frame."],
-        ["ADDRESS", "32 Oseto, Kohata, Uji-shi, Kyoto 611-0002"]
-      ]
+      title: "Kyoto Animation — Uji, Kyoto",
+      story: "Yoko Hatta worked as a painter at Mushi Production in Nerima, Tokyo through the 1970s. She left when she married Hideaki Hatta and moved to his hometown in Kyoto. Once there, in 1981, she gathered a few neighbourhood housewives with time on their hands and started taking subcontracted cel-painting work from Tatsunoko and Pierrot in Tokyo. The arrangement worked because animation cels could be mailed. By 1985 they had incorporated as Kyoto Animation."
     },
     pa: {
-      quote: "P.A. Works founder Kenji Horikawa worked at three Tokyo studios — Tatsunoko, Production I.G, Bee Train — before deciding he wanted to raise his family back in Toyama, where he was from.",
-      facts: [
-        ["FOUNDED", "10 November 2000"],
-        ["FOUNDER", "Kenji Horikawa"],
-        ["WHY HERE", "Horikawa wanted to live in Toyama. He kept a Tokyo coordination office, but the actual drawing happens in rural Nanto."],
-        ["NOTABLE", "Shirobako (2014) is essentially a love letter to a working anime studio, drawn at P.A. Works itself."],
-        ["ADDRESS", "1508-8 Tatenoharahigashi, Nanto, Toyama"]
-      ]
+      title: "P.A. Works — Nanto, Toyama",
+      story: "Kenji Horikawa grew up in Aichi, but worked his entire career in Tokyo — Tatsunoko, then Production I.G, then helping found Bee Train in 1997 in Musashino. He promised his wife they would move to her hometown in Toyama when her parents got too old to live alone. In 2000 he kept the promise, founding 'Etchu Douga Honpo' (renamed P.A. Works in 2002) in a town with no other animators. 'Only one person came with me to Toyama when I opened it,' Horikawa later said."
     },
     ufo: {
-      quote: "ufotable opened its Tokushima studio in April 2009. Tokyo HQ remained in Nakano, but Tokushima became a satellite — used partly to train new animators and partly because it could.",
-      facts: [
-        ["FOUNDED (main)", "October 2000, Nakano-ku Tokyo"],
-        ["TOKUSHIMA STUDIO", "April 2009"],
-        ["WHY HERE", "Tokushima has lower costs and a connection to studio leadership. ufotable runs an annual local festival, Machi★Asobi, that has become a major regional event."],
-        ["NOTABLE", "Tokushima studio handled significant work on Demon Slayer."],
-        ["ADDRESS (Tokushima)", "Higashi-Funaba-cho, Tokushima-shi"]
-      ]
-    },
-    ghibli: {
-      quote: "Ghibli isn't 'non-Tokyo' strictly — Koganei is part of Tokyo Metropolis — but it's outside the 23 special wards, in the leafy western suburbs where Miyazaki has lived for decades.",
-      facts: [
-        ["FOUNDED", "15 June 1985"],
-        ["FOUNDERS", "Hayao Miyazaki, Isao Takahata, Toshio Suzuki"],
-        ["WHY HERE", "Miyazaki and Takahata both lived in the western Tokyo suburbs. Originally based in Kichijōji (Musashino); moved to Koganei in 1992."],
-        ["NOTABLE", "The Ghibli Museum sits in adjacent Mitaka, inside Inokashira Park."],
-        ["ADDRESS", "1-4-25 Kajinocho, Koganei-shi, Tokyo 184-0002"]
-      ]
+      title: "ufotable Tokushima — Tokushima City",
+      story: "Hikaru Kondō was born in Tokushima in 1969. He worked in Tokyo through the 1990s as a production assistant at TMS Entertainment and its full-animation subsidiary Telecom Animation Film, then as a producer at Step Eizou. He founded ufotable in Tokyo in October 2000. The Tokushima studio opened in April 2009 — not a relocation, but a satellite in his hometown. It would later handle significant work on Demon Slayer."
     }
   };
 
-  function renderWhyHere(key) {
-    const data = whyHereData[key];
-    const html = '<div class="quote">' + data.quote + '</div>' +
-      '<div class="factoid">' +
-      data.facts.map(function(pair) {
-        return '<strong>' + pair[0] + '</strong> · ' + pair[1];
-      }).join('<br>') +
-      '</div>';
-    document.getElementById('whyhere-content').innerHTML = html;
+  function renderFounderStory(key) {
+    const data = founderStories[key];
+    const html =
+      '<div class="quote" style="font-family: var(--serif); font-size: 1.15rem; margin-top: 2rem;">' + data.title + '</div>' +
+      '<div class="factoid" style="margin-top: 0.8rem; line-height: 1.65;">' + data.story + '</div>';
+    document.getElementById('whyhere-story').innerHTML = html;
+  }
+
+  function loadTimelineSpec(key) {
+    fetch('specs/10_founder_timeline_' + key + '.json')
+      .then(function(r) { return r.json(); })
+      .then(function(spec) {
+        vegaEmbed('#viz_10', spec, embedOptions).catch(function(err) {
+          console.error('Failed to render viz_10', err);
+        });
+      });
   }
 
   document.querySelectorAll('.whyhere-tab').forEach(function(btn) {
     btn.addEventListener('click', function() {
       document.querySelectorAll('.whyhere-tab').forEach(function(b) { b.classList.remove('active'); });
       btn.classList.add('active');
-      renderWhyHere(btn.dataset.studio);
+      const key = btn.dataset.studio;
+      loadTimelineSpec(key);
+      renderFounderStory(key);
     });
   });
 
-  renderWhyHere('kyoani');
+  renderFounderStory('kyoani');
 </script>
 
 </body>

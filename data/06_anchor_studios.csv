@@ -1,20 +1,18 @@
-studio_name,name_japanese,ward_city,prefecture,address,founded_year,founder,notable_works,verified_source
-MAPPA,株式会社MAPPA,Suginami,Tokyo,"待 Wikipedia 详查",2011,Masao Maruyama,"Jujutsu Kaisen / Attack on Titan: Final Season / Chainsaw Man / Vinland Saga S2 / Yuri!!! on Ice",Vitrina.ai 2026
-ufotable,有限会社ufotable,Nakano,Tokyo,"1-38-11 Nogata, Nakano-ku",2000,Hikaru Kondō,"Demon Slayer: Kimetsu no Yaiba / Fate/Zero / Fate/stay night UBW / Tales of Symphonia",Wikipedia + 公司官网
-ufotable Tokushima,(分部),Tokushima-shi,Tokushima,"1-13 Higashi-Funaba-cho, Tokushima-shi",2009,—,"Subsidiary established April 2009",公司官网
-Studio Bones,株式会社ボンズ,Suginami (Igusa),Tokyo,—,1998,—,"Fullmetal Alchemist: Brotherhood / My Hero Academia",Suginami 官方 + Expert Market Research
-Sunrise (Bandai Namco Filmworks),バンダイナムコフィルムワークス,Suginami (Kami-Igusa),Tokyo,—,1972,—,"Mobile Suit Gundam / Cowboy Bebop",Suginami 官方
-Toei Animation,東映アニメーション,Nerima (Oizumi),Tokyo,—,1948,—,"Dragon Ball / One Piece / Sailor Moon / Hakujaden (1958 first color anime feature)",Wikipedia
-Mushi Production,虫プロダクション,Nerima,Tokyo,—,1962,Osamu Tezuka,"Astro Boy (1963 first anime TV series)",Wikipedia
-Studio Ghibli,株式会社スタジオジブリ,Koganei-shi,Tokyo,"1-4-25 Kajinocho, Koganei-shi, Tokyo 184-0002",1985,"Hayao Miyazaki, Isao Takahata, Toshio Suzuki","Spirited Away / Princess Mononoke / My Neighbor Totoro / The Boy and the Heron",Wikipedia + GhibliWiki + D&B
-Kyoto Animation,株式会社京都アニメーション,Uji-shi,Kyoto,"32 Oseto, Kohata, Uji-shi, Kyoto 611-0002",1981,"Hideaki Hatta, Yoko Hatta","K-On! / Violet Evergarden / A Silent Voice / Sound! Euphonium",Wikipedia + 公司官网
-P.A. Works,株式会社ピーエーワークス,Nanto-shi,Toyama,"1508-8 Tatenoharahigashi, Nanto, Toyama",2000,Kenji Horikawa,"Shirobako / Angel Beats! / Hanasaku Iroha",Wikipedia + Grokipedia + AniDB
-Studio Pierrot,株式会社ぴえろ,—,Tokyo,"VERIFY",1979,—,"Naruto / Bleach / Tokyo Ghoul",pending
-Production I.G,株式会社プロダクション・アイジー,Musashino,Tokyo,"VERIFY - non-23-ku Tokyo",1987,—,"Ghost in the Shell / Psycho-Pass / Haikyu!!",pending
-WIT Studio,株式会社ウィットスタジオ,—,Tokyo,"VERIFY",2012,—,"Attack on Titan S1-3 / Vinland Saga S1 / Spy x Family",pending
-CloverWorks,株式会社クローバーワークス,Suginami,Tokyo,"VERIFY",2018,—,"Spy x Family / Bocchi the Rock! / Wonder Egg Priority",pending
-Studio Trigger,株式会社トリガー,Suginami (Ogikubo area),Tokyo,"VERIFY",2011,—,"Kill la Kill / Cyberpunk: Edgerunners / SSSS.Gridman",pending
-WHITE FOX,株式会社WHITE FOX,Suginami (Ogikubo area),Tokyo,"VERIFY",2007,—,"Steins;Gate / Re:Zero",pending
-Liden Films,株式会社ライデンフィルム,Suginami (Ogikubo area),Tokyo,"VERIFY",2012,—,"Tokyo Revengers / Berserk",pending
-Studio Comet,株式会社スタジオコメット,Nerima,Tokyo,—,1986,—,"Mr. Osomatsu",Wikipedia
-A-1 Pictures,株式会社エー・ワン・ピクチャーズ,—,Tokyo,"VERIFY",2005,—,"Solo Leveling / Sword Art Online / The Seven Deadly Sins",pending
+studio_name,name_japanese,ward_city,prefecture,location_class,founded_year,works_count,founder,notable_works,verified_source
+Toei Animation,東映アニメーション,Nerima (Oizumi),Tokyo,Tokyo 23-ku,1948,5,Hiroshi Okawa,"One Piece / Dragon Ball / Sailor Moon / first color anime feature (Hakujaden, 1958)","Wikipedia + Toei official"
+Mushi Production,虫プロダクション,Nerima,Tokyo,Tokyo 23-ku,1962,1,Osamu Tezuka,"Astro Boy (1963, first anime TV series)","Wikipedia"
+Sunrise,株式会社サンライズ,Suginami (Kami-Igusa),Tokyo,Tokyo 23-ku,1972,3,ex-Mushi staff,"Mobile Suit Gundam / Cowboy Bebop / Code Geass","Wikipedia"
+Studio Pierrot,ぴえろ,Nakano (then Mitaka),Tokyo,Tokyo 23-ku,1979,3,Yuji Nunokawa,"Naruto / Bleach / Tokyo Ghoul","Wikipedia"
+Kyoto Animation,京都アニメーション,Uji,Kyoto,Kyoto,1981,5,"Hideaki & Yoko Hatta","K-On! / Violet Evergarden / A Silent Voice / Sound! Euphonium / Free!","Wikipedia + Honey Anime"
+Studio Ghibli,株式会社スタジオジブリ,Koganei,Tokyo,Tokyo (not 23-ku),1985,5,"Miyazaki + Takahata + Suzuki","Spirited Away / Princess Mononoke / The Boy and the Heron / My Neighbor Totoro / Howl's Moving Castle","Wikipedia"
+Production I.G,プロダクション・アイジー,Musashino,Tokyo,Tokyo 23-ku,1987,4,Mitsuhisa Ishikawa + Takayuki Goto,"Ghost in the Shell / Psycho-Pass / Haikyuu!! / Eden of the East","Wikipedia"
+Studio Bones,株式会社ボンズ,Suginami (Igusa),Tokyo,Tokyo 23-ku,1998,3,"Minami + Osaka + Kawamoto","Fullmetal Alchemist Brotherhood / My Hero Academia / Mob Psycho 100","Wikipedia + Anime Expo 2023"
+ufotable,有限会社ufotable,Nakano,Tokyo,Tokyo 23-ku,2000,4,Hikaru Kondō,"Demon Slayer / Fate/Zero / Fate/stay night UBW / Tales of Symphonia","Wikipedia + 公司官网"
+P.A. Works,株式会社ピーエーワークス,Nanto,Toyama,Toyama,2000,4,Kenji Horikawa,"Shirobako / Hanasaku Iroha / Angel Beats! / The Eccentric Family","Wikipedia + Japan Times 2016"
+A-1 Pictures,株式会社A-1 Pictures,Suginami,Tokyo,Tokyo 23-ku,2005,4,Aniplex subsidiary,"Sword Art Online / Your Lie in April / Erased / 86","Wikipedia"
+WHITE FOX,株式会社WHITE FOX,Suginami,Tokyo,Tokyo 23-ku,2007,2,Gaku Iwasa,"Steins;Gate / Re:Zero","Wikipedia"
+MAPPA,株式会社MAPPA,Suginami,Tokyo,Tokyo 23-ku,2011,5,Masao Maruyama,"Jujutsu Kaisen / Chainsaw Man / Attack on Titan Final / Vinland Saga S2 / Yuri!!! on Ice","Wikipedia + Vitrina.ai"
+Studio Trigger,株式会社トリガー,Suginami,Tokyo,Tokyo 23-ku,2011,3,ex-Gainax,"Kill la Kill / Promare / Cyberpunk: Edgerunners","Wikipedia"
+Liden Films,株式会社ライデンフィルム,Suginami,Tokyo,Tokyo 23-ku,2012,2,IG Port subsidiary,"Tokyo Revengers / Berserk (2016)","Wikipedia"
+WIT Studio,WITスタジオ,Musashino,Tokyo,Tokyo 23-ku,2012,4,Production I.G subsidiary,"Attack on Titan S1-3 / Spy x Family / Vinland Saga S1 / Ranking of Kings","Wikipedia"
+CloverWorks,株式会社CloverWorks,Suginami,Tokyo,Tokyo 23-ku,2018,3,A-1 spin-off,"Spy x Family / Bocchi the Rock! / Wonder Egg Priority","Wikipedia"
