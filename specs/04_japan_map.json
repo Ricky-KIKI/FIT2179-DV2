@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "description": "Japan prefecture-level studios — 542 in Tokyo dwarfs the rest",
-  "width": 700,
-  "height": 560,
+  "width": 900,
+  "height": 633,
   "background": "transparent",
   "config": {
     "view": {
@@ -11,7 +11,12 @@
     "font": "Manrope"
   },
   "projection": {
-    "type": "identity"
+    "type": "identity",
+    "scale": 1.1062,
+    "translate": [
+      -45.0,
+      -46.9
+    ]
   },
   "layer": [
     {
@@ -219,7 +224,7 @@
       "data": {
         "values": [
           {
-            "sub": "542 studios · 87% national share",
+            "sub": "542 studios · 87% of Japan",
             "lon": 720,
             "lat": 320
           }

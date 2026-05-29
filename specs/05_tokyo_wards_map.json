@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "description": "Inside Tokyo — Suginami (138) + Nerima (103) with anchor studio markers",
-  "width": 700,
-  "height": 520,
+  "width": 900,
+  "height": 669,
   "background": "transparent",
   "config": {
     "view": {
@@ -12,10 +12,10 @@
   },
   "projection": {
     "type": "identity",
-    "scale": 60,
+    "scale": 77.14,
     "translate": [
-      -27250,
-      -18420
+      -35035.7,
+      -23682.9
     ]
   },
   "layer": [
