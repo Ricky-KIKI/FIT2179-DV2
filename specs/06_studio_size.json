@@ -1,46 +1,70 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "description": "Anime studios by employee count, TDB 2023 survey of 317 companies",
+  "description": "Anime studios by employee count with cumulative share - Teikoku Databank 2023 survey of 317 companies",
 
   "width": "container",
-  "height": 280,
-  "padding": {"top": 10, "right": 30, "bottom": 30, "left": 90},
+  "height": 300,
+  "padding": {"top": 20, "right": 60, "bottom": 30, "left": 70},
 
   "data": {
-    "url": "data/04_tdb2023_studio_size_distribution.csv",
-    "format": {"type": "csv", "parse": {"studio_count": "number"}}
+    "url": "data/04b_studio_employees.csv",
+    "format": {"type": "csv", "parse": {"studio_count": "number", "size_order": "number", "cumulative_pct": "number"}}
   },
 
-  "transform": [
-    {"filter": "datum.category === 'employees'"},
-    {"calculate": "{'<=5': '5 or fewer', '6-20': '6 to 20', '21-50': '21 to 50', '51-100': '51 to 100', '>100': 'more than 100'}[datum.bucket]", "as": "size_label"}
-  ],
-
   "encoding": {
-    "y": {
+    "x": {
       "field": "size_label",
       "type": "ordinal",
       "sort": ["5 or fewer", "6 to 20", "21 to 50", "51 to 100", "more than 100"],
       "title": null,
-      "axis": {"labelPadding": 8, "labelFontSize": 12}
-    },
-    "x": {
-      "field": "studio_count",
-      "type": "quantitative",
-      "title": "Number of studios",
-      "axis": {"grid": true}
+      "axis": {"labelAngle": 0, "labelPadding": 8, "labelFontSize": 11, "labelFont": "Manrope"}
     }
   },
 
   "layer": [
     {
-      "mark": {"type": "bar", "height": 36, "color": "#D63838", "cornerRadiusEnd": 2}
+      "mark": {"type": "bar", "width": 44, "color": "#D63838", "opacity": 0.9},
+      "encoding": {
+        "y": {
+          "field": "studio_count",
+          "type": "quantitative",
+          "title": "Number of studios",
+          "scale": {"domain": [0, 120]},
+          "axis": {"grid": true, "gridColor": "#E6DFD0", "titleColor": "#D63838"}
+        },
+        "tooltip": [
+          {"field": "size_label", "type": "ordinal", "title": "Studio size"},
+          {"field": "studio_count", "type": "quantitative", "title": "Studios"},
+          {"field": "cumulative_pct", "type": "quantitative", "title": "Cumulative %"}
+        ]
+      }
     },
     {
-      "mark": {"type": "text", "align": "left", "dx": 6, "fontSize": 11, "font": "IBM Plex Mono", "color": "#1A1716"},
+      "mark": {"type": "text", "baseline": "bottom", "dy": -6, "fontSize": 11, "font": "IBM Plex Mono", "color": "#1A1716"},
       "encoding": {
+        "y": {"field": "studio_count", "type": "quantitative"},
         "text": {"field": "studio_count"}
       }
+    },
+    {
+      "mark": {"type": "line", "color": "#1A1716", "strokeWidth": 2, "point": {"filled": true, "size": 55, "color": "#1A1716"}},
+      "encoding": {
+        "y": {
+          "field": "cumulative_pct",
+          "type": "quantitative",
+          "scale": {"domain": [0, 100]},
+          "axis": {"title": "Cumulative %", "titleColor": "#1A1716", "orient": "right", "grid": false}
+        }
+      }
+    },
+    {
+      "mark": {"type": "text", "align": "left", "dx": 10, "dy": -10, "fontSize": 10, "font": "IBM Plex Mono", "color": "#1A1716"},
+      "encoding": {
+        "y": {"field": "cumulative_pct", "type": "quantitative", "scale": {"domain": [0, 100]}},
+        "text": {"field": "cumulative_pct"}
+      }
     }
-  ]
+  ],
+
+  "resolve": {"scale": {"y": "independent"}}
 }

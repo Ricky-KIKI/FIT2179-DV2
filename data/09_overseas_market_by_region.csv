@@ -1,9 +1,9 @@
-region,share_pct,order,x_start,x_end,year,source
-Asia,32.1,1,0.0,32.1,2022,AJA Industry Report 2023
-Europe,21.2,2,32.1,53.3,2022,AJA Industry Report 2023
-C / S America,16.0,3,53.3,69.3,2022,AJA Industry Report 2023
-Oceania,7.6,4,69.3,76.9,2022,AJA Industry Report 2023
-Middle East,7.3,5,76.9,84.2,2022,AJA Industry Report 2023
-Africa,5.5,6,84.2,89.7,2022,AJA Industry Report 2023
-Eastern Europe,5.5,7,89.7,95.2,2022,AJA Industry Report 2023
-North America,4.7,8,95.2,99.9,2022,AJA Industry Report 2023
+region,highlight,share_pct,order,x_start,x_end,year,source
+Asia,top,32.1,1,0.0,32.1,2022,AJA Industry Report 2023
+Europe,other,21.2,2,32.1,53.3,2022,AJA Industry Report 2023
+C / S America,other,16.0,3,53.3,69.3,2022,AJA Industry Report 2023
+Oceania,other,7.6,4,69.3,76.9,2022,AJA Industry Report 2023
+Middle East,other,7.3,5,76.9,84.2,2022,AJA Industry Report 2023
+Africa,other,5.5,6,84.2,89.7,2022,AJA Industry Report 2023
+Eastern Europe,other,5.5,7,89.7,95.2,2022,AJA Industry Report 2023
+North America,last,4.7,8,95.2,99.9,2022,AJA Industry Report 2023

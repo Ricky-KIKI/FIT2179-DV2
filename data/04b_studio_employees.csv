@@ -1,0 +1,6 @@
+size_label,size_order,studio_count,cumulative_pct
+5 or fewer,1,93,29
+6 to 20,2,98,60
+21 to 50,3,60,79
+51 to 100,4,38,91
+more than 100,5,28,100

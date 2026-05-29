@@ -1,98 +1,55 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "description": "Where the overseas anime money comes from — AJA 2022",
+  "description": "Overseas anime market by region (licensing contracts), AJA 2022, with streaming-revenue contrast annotation",
 
   "width": "container",
-  "height": 200,
-  "padding": {"top": 50, "right": 30, "bottom": 50, "left": 30},
+  "height": 260,
+  "padding": {"top": 20, "right": 20, "bottom": 20, "left": 20},
 
   "data": {
     "url": "data/09_overseas_market_by_region.csv",
-    "format": {"type": "csv", "parse": {"share_pct": "number", "order": "number", "x_start": "number", "x_end": "number"}}
+    "format": {"type": "csv", "parse": {"share_pct": "number", "order": "number"}}
   },
 
-  "transform": [
-    {"calculate": "(datum.x_start + datum.x_end) / 2", "as": "x_center"}
-  ],
+  "encoding": {
+    "y": {
+      "field": "region",
+      "type": "nominal",
+      "sort": ["Asia", "Europe", "C / S America", "Oceania", "Middle East", "Africa", "Eastern Europe", "North America"],
+      "title": null,
+      "axis": {"labelFont": "Manrope", "labelFontSize": 12, "labelFontWeight": 500, "labelColor": "#1A1716", "domain": false, "ticks": false, "labelPadding": 10}
+    },
+    "x": {
+      "field": "share_pct",
+      "type": "quantitative",
+      "title": "Share of overseas licensing contracts (%)",
+      "scale": {"domain": [0, 35]},
+      "axis": {"grid": true, "gridColor": "#E6DFD0", "gridDash": [2, 3], "labelFont": "IBM Plex Mono", "labelFontSize": 10, "titleFont": "Manrope", "titleFontSize": 11, "titleColor": "#5A524F"}
+    }
+  },
 
   "layer": [
     {
-      "mark": {"type": "bar", "stroke": "#FAF7F0", "strokeWidth": 1.5, "height": 60},
+      "mark": {"type": "bar", "height": 18},
       "encoding": {
-        "x":  {"field": "x_start", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
-        "x2": {"field": "x_end"},
         "color": {
-          "field": "region", "type": "nominal", "sort": null,
-          "scale": {"range": ["#D63838", "#C46A2E", "#A88B3D", "#8C7438", "#6C5F38", "#5A524F", "#9B9B95", "#C8B89E"]},
+          "field": "highlight",
+          "type": "nominal",
+          "scale": {
+            "domain": ["top", "other", "last"],
+            "range": ["#D63838", "#A88B3D", "#9E1B1B"]
+          },
           "legend": null
         },
         "tooltip": [
-          {"field": "region", "type": "nominal"},
-          {"field": "share_pct", "type": "quantitative", "format": ".1f", "title": "Share (%)"}
+          {"field": "region", "type": "nominal", "title": "Region"},
+          {"field": "share_pct", "type": "quantitative", "format": ".1f", "title": "Contract share (%)"}
         ]
       }
     },
     {
-      "transform": [{"filter": "datum.share_pct >= 7"}],
-      "mark": {"type": "text", "color": "#FAF7F0", "fontWeight": 600, "fontSize": 12, "font": "IBM Plex Mono"},
+      "mark": {"type": "text", "align": "left", "dx": 6, "fontSize": 11, "font": "IBM Plex Mono", "color": "#1A1716", "fontWeight": 500},
       "encoding": {
-        "x": {"field": "x_center", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
-        "text": {"field": "share_pct", "type": "quantitative", "format": ".1f"}
-      }
-    },
-    {
-      "transform": [{"filter": "datum.share_pct >= 7"}],
-      "mark": {"type": "text", "color": "#1A1716", "fontWeight": 600, "fontSize": 11, "font": "Manrope", "dy": -40, "align": "center"},
-      "encoding": {
-        "x": {"field": "x_center", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
-        "text": {"field": "region", "type": "nominal"}
-      }
-    },
-    {
-      "transform": [{"filter": "datum.region == 'Africa'"}],
-      "mark": {"type": "text", "color": "#5A524F", "fontWeight": 500, "fontSize": 9, "font": "IBM Plex Mono", "dy": 42, "align": "center"},
-      "encoding": {
-        "x": {"field": "x_center", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
-        "text": {"field": "region", "type": "nominal"}
-      }
-    },
-    {
-      "transform": [{"filter": "datum.region == 'Africa'"}],
-      "mark": {"type": "text", "color": "#5A524F", "fontWeight": 500, "fontSize": 9, "font": "IBM Plex Mono", "dy": 54, "align": "center"},
-      "encoding": {
-        "x": {"field": "x_center", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
-        "text": {"field": "share_pct", "type": "quantitative", "format": ".1f"}
-      }
-    },
-    {
-      "transform": [{"filter": "datum.region == 'Eastern Europe'"}],
-      "mark": {"type": "text", "color": "#5A524F", "fontWeight": 500, "fontSize": 9, "font": "IBM Plex Mono", "dy": 64, "align": "center"},
-      "encoding": {
-        "x": {"field": "x_center", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
-        "text": {"field": "region", "type": "nominal"}
-      }
-    },
-    {
-      "transform": [{"filter": "datum.region == 'Eastern Europe'"}],
-      "mark": {"type": "text", "color": "#5A524F", "fontWeight": 500, "fontSize": 9, "font": "IBM Plex Mono", "dy": 76, "align": "center"},
-      "encoding": {
-        "x": {"field": "x_center", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
-        "text": {"field": "share_pct", "type": "quantitative", "format": ".1f"}
-      }
-    },
-    {
-      "transform": [{"filter": "datum.region == 'North America'"}],
-      "mark": {"type": "text", "color": "#5A524F", "fontWeight": 500, "fontSize": 9, "font": "IBM Plex Mono", "dy": 42, "align": "center"},
-      "encoding": {
-        "x": {"field": "x_center", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
-        "text": {"field": "region", "type": "nominal"}
-      }
-    },
-    {
-      "transform": [{"filter": "datum.region == 'North America'"}],
-      "mark": {"type": "text", "color": "#5A524F", "fontWeight": 500, "fontSize": 9, "font": "IBM Plex Mono", "dy": 54, "align": "center"},
-      "encoding": {
-        "x": {"field": "x_center", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
         "text": {"field": "share_pct", "type": "quantitative", "format": ".1f"}
       }
     }

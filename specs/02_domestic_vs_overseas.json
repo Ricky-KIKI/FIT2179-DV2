@@ -6,15 +6,9 @@
   "padding": {"top": 10, "right": 90, "bottom": 30, "left": 50},
 
   "data": {
-    "url": "data/01_aja_market_timeseries.csv",
-    "format": {"type": "csv", "parse": {"year": "number", "total_market_jpy_trillion": "number", "domestic_jpy_trillion": "number", "overseas_jpy_trillion": "number"}}
+    "url": "data/02_domestic_vs_overseas.csv",
+    "format": {"type": "csv", "parse": {"year": "number", "value": "number"}}
   },
-
-  "transform": [
-    {"filter": "datum.domestic_jpy_trillion != null && datum.domestic_jpy_trillion != ''"},
-    {"fold": ["domestic_jpy_trillion", "overseas_jpy_trillion"], "as": ["segment_raw", "value"]},
-    {"calculate": "datum.segment_raw === 'domestic_jpy_trillion' ? 'Domestic' : 'Overseas'", "as": "segment"}
-  ],
 
   "encoding": {
     "x": {
@@ -42,14 +36,20 @@
 
   "layer": [
     {
-      "mark": {"type": "line", "strokeWidth": 2.5, "point": {"filled": true, "size": 70}}
+      "mark": {"type": "line", "strokeWidth": 2.5, "point": {"filled": true, "size": 70}},
+      "encoding": {
+        "tooltip": [
+          {"field": "year", "type": "ordinal", "title": "Year"},
+          {"field": "segment", "type": "nominal", "title": "Market"},
+          {"field": "value", "type": "quantitative", "format": ".3f", "title": "Trillion yen"}
+        ]
+      }
     },
     {
+      "transform": [{"filter": "datum.year == 2024"}],
       "mark": {"type": "text", "align": "left", "dx": 8, "fontSize": 11, "font": "Manrope", "fontWeight": 600},
       "encoding": {
-        "text": {"field": "segment"},
-        "x": {"field": "year", "type": "ordinal", "aggregate": "max"},
-        "y": {"field": "value", "type": "quantitative", "aggregate": {"argmax": "year"}}
+        "text": {"field": "segment"}
       }
     }
   ]

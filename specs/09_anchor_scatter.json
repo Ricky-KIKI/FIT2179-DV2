@@ -33,11 +33,11 @@
       "mark": {"type": "circle", "size": 220, "opacity": 0.9, "stroke": "#FAF7F0", "strokeWidth": 2},
       "encoding": {
         "color": {
-          "field": "location_class",
+          "field": "location_group",
           "type": "nominal",
           "scale": {
-            "domain": ["Tokyo 23-ku", "Tokyo (not 23-ku)", "Kyoto", "Toyama"],
-            "range": ["#1A1716", "#A88B3D", "#D63838", "#D63838"]
+            "domain": ["Tokyo 23 wards", "Greater Tokyo", "Outside Tokyo"],
+            "range": ["#1A1716", "#A88B3D", "#D63838"]
           },
           "legend": {
             "title": null,
