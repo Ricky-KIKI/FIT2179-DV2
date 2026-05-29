@@ -1,9 +1,13 @@
 year,total_market_jpy_trillion,domestic_jpy_trillion,overseas_jpy_trillion,label,anchor,source
 2009,1.2661,,,AJA tracking baseline,left,AJA Anime Industry Report
-2014,1.64,,,,,AJA Anime Industry Report
-2019,2.5145,,,Pre-pandemic peak,right,AJA Anime Industry Report 2020
-2020,2.4261,1.1805,1.2394,COVID dip −3.5%,left,AJA Anime Industry Report 2021
+2014,1.6400,,,,,AJA Anime Industry Report 2015
+2015,1.8215,,,,,AJA Anime Industry Report 2017 (revised)
+2016,2.0009,,,reaches ¥2T,left,AJA Anime Industry Report 2017
+2017,2.1527,,,,,AJA Anime Industry Report 2018
+2018,2.1814,,,,,AJA Anime Industry Report 2019
+2019,2.5112,,,Pre-pandemic peak,right,AJA Anime Industry Report 2020
+2020,2.4261,1.1805,1.2394,COVID dip,left,AJA Anime Industry Report 2021
 2021,2.7422,1.4288,1.3134,,,AJA Anime Industry Report 2022
 2022,2.9277,1.4685,1.4592,,,AJA Anime Industry Report 2023
-2023,3.3465,1.6243,1.7222,Overseas overtakes (permanently),right,AJA Anime Industry Report 2024
-2024,3.8407,1.6705,2.1702,¥3.84T record,right,AJA Anime Industry Report 2025
+2023,3.3465,1.6243,1.7222,Overseas overtakes,right,AJA Anime Industry Report 2024
+2024,3.8407,1.6705,2.1702,Record high,right,AJA Anime Industry Report 2025

@@ -1,9 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "description": "AJA anime industry market size, verified data points 2009-2024",
+  "description": "AJA anime industry market size, verified annual data 2009 + 2014-2024",
   "width": "container",
   "height": 320,
-  "padding": {"top": 10, "right": 20, "bottom": 30, "left": 50},
+  "padding": {"top": 10, "right": 24, "bottom": 30, "left": 50},
 
   "data": {
     "url": "data/01_aja_market_timeseries.csv",
@@ -13,9 +13,10 @@
   "encoding": {
     "x": {
       "field": "year",
-      "type": "ordinal",
+      "type": "quantitative",
       "title": null,
-      "axis": {"labelAngle": 0, "labelPadding": 8}
+      "scale": {"domain": [2008, 2025]},
+      "axis": {"format": "d", "labelAngle": 0, "labelPadding": 8, "values": [2009, 2012, 2015, 2018, 2021, 2024], "tickCount": 6}
     },
     "y": {
       "field": "total_market_jpy_trillion",
@@ -32,7 +33,7 @@
     {
       "mark": {
         "type": "line", "color": "#D63838", "strokeWidth": 2.5,
-        "point": {"filled": true, "size": 80, "color": "#D63838"}
+        "point": {"filled": true, "size": 70, "color": "#D63838"}
       }
     },
     {

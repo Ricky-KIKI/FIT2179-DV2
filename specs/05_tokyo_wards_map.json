@@ -21,7 +21,7 @@
         "format": {"type": "topojson", "feature": "municipalities"}
       },
       "transform": [{"filter": "datum.id != null && substring(datum.id, 0, 2) == '13'"}],
-      "mark": {"type": "geoshape", "fill": "#D5CCB8", "stroke": "#FAF7F0", "strokeWidth": 0.8}
+      "mark": {"type": "geoshape", "fill": "#B0A285", "stroke": "#8A7C61", "strokeWidth": 0.6}
     },
 
     {
@@ -36,7 +36,8 @@
             "data": {
               "values": [
                 {"wid": "13115", "studios": 138},
-                {"wid": "13120", "studios": 103}
+                {"wid": "13120", "studios": 103},
+                {"wid": "13114", "studios": 30}
               ]
             },
             "key": "wid",
@@ -49,7 +50,7 @@
       "encoding": {
         "color": {
           "field": "studios", "type": "quantitative",
-          "scale": {"range": ["#EDA1A1", "#D63838"], "domain": [95, 145]},
+          "scale": {"range": ["#E8B4B4", "#D63838", "#9E1B1B"], "domain": [30, 90, 138]},
           "legend": null
         }
       }
@@ -180,6 +181,30 @@
       "mark": {
         "type": "text", "font": "IBM Plex Mono", "fontSize": 9,
         "color": "#5A524F", "align": "center", "dy": 16
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude":  {"field": "lat", "type": "quantitative"},
+        "text":      {"field": "sub"}
+      }
+    },
+    {
+      "data": {"values": [{"label": "NAKANO", "lon": 461.95, "lat": 311.78}]},
+      "mark": {
+        "type": "text", "font": "Shippori Mincho B1", "fontSize": 12, "fontWeight": 700,
+        "color": "#B85C5C", "align": "left"
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude":  {"field": "lat", "type": "quantitative"},
+        "text":      {"field": "label"}
+      }
+    },
+    {
+      "data": {"values": [{"sub": "30 studios", "lon": 461.95, "lat": 311.78}]},
+      "mark": {
+        "type": "text", "font": "IBM Plex Mono", "fontSize": 8,
+        "color": "#5A524F", "align": "left", "dy": 13
       },
       "encoding": {
         "longitude": {"field": "lon", "type": "quantitative"},
