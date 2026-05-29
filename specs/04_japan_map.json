@@ -133,6 +133,41 @@
         "latitude":  {"field": "lat", "type": "quantitative"},
         "text":      {"field": "sub"}
       }
+    },
+
+    {
+      "data": {"values": [{"x": 545, "y": 560}]},
+      "mark": {"type": "square", "size": 130, "fill": "#D63838", "stroke": "#FAF7F0", "strokeWidth": 1, "xOffset": 0},
+      "encoding": {
+        "longitude": {"field": "x", "type": "quantitative"},
+        "latitude":  {"field": "y", "type": "quantitative"}
+      }
+    },
+    {
+      "data": {"values": [{"label": "Tokyo (542 studios)", "x": 545, "y": 560}]},
+      "mark": {"type": "text", "font": "Manrope", "fontSize": 11, "fontWeight": 600, "color": "#1A1716", "align": "left", "dx": 12},
+      "encoding": {
+        "longitude": {"field": "x", "type": "quantitative"},
+        "latitude":  {"field": "y", "type": "quantitative"},
+        "text":      {"field": "label"}
+      }
+    },
+    {
+      "data": {"values": [{"x": 545, "y": 585}]},
+      "mark": {"type": "square", "size": 130, "fill": "#9A7B2E", "stroke": "#FAF7F0", "strokeWidth": 1},
+      "encoding": {
+        "longitude": {"field": "x", "type": "quantitative"},
+        "latitude":  {"field": "y", "type": "quantitative"}
+      }
+    },
+    {
+      "data": {"values": [{"label": "Prefecture with a notable studio", "x": 545, "y": 585}]},
+      "mark": {"type": "text", "font": "Manrope", "fontSize": 11, "fontWeight": 600, "color": "#1A1716", "align": "left", "dx": 12},
+      "encoding": {
+        "longitude": {"field": "x", "type": "quantitative"},
+        "latitude":  {"field": "y", "type": "quantitative"},
+        "text":      {"field": "label"}
+      }
     }
   ]
 }
