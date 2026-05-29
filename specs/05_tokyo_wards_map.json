@@ -581,6 +581,215 @@
           "field": "sub"
         }
       }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 459.55,
+            "lat": 313.2,
+            "t": "Studios per ward — darker = more"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Manrope",
+        "fontSize": 11,
+        "fontWeight": 700,
+        "color": "#5A524F",
+        "align": "left"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 459.75,
+            "lat": 313.55
+          }
+        ]
+      },
+      "mark": {
+        "type": "square",
+        "size": 340,
+        "fill": "#E8B4B4",
+        "stroke": "#FAF7F0",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 460.2,
+            "lat": 313.55
+          }
+        ]
+      },
+      "mark": {
+        "type": "square",
+        "size": 340,
+        "fill": "#D63838",
+        "stroke": "#FAF7F0",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 460.65,
+            "lat": 313.55
+          }
+        ]
+      },
+      "mark": {
+        "type": "square",
+        "size": 340,
+        "fill": "#9E1B1B",
+        "stroke": "#FAF7F0",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 459.75,
+            "lat": 313.85,
+            "t": "30"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "IBM Plex Mono",
+        "fontSize": 10,
+        "fontWeight": 500,
+        "color": "#5A524F",
+        "align": "center"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 460.2,
+            "lat": 313.85,
+            "t": "100"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "IBM Plex Mono",
+        "fontSize": 10,
+        "fontWeight": 500,
+        "color": "#5A524F",
+        "align": "center"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 460.65,
+            "lat": 313.85,
+            "t": "138"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "IBM Plex Mono",
+        "fontSize": 10,
+        "fontWeight": 500,
+        "color": "#5A524F",
+        "align": "center"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
     }
   ]
 }

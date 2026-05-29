@@ -1,28 +1,41 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "description": "Japan prefecture-level studios — 542 in Tokyo dwarfs the rest",
-
   "width": 700,
   "height": 560,
   "background": "transparent",
-
-  "config": {"view": {"stroke": null}, "font": "Manrope"},
-
-  "projection": {"type": "identity"},
-
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Manrope"
+  },
+  "projection": {
+    "type": "identity"
+  },
   "layer": [
     {
       "data": {
         "url": "data/japan.json",
-        "format": {"type": "topojson", "feature": "prefectures"}
+        "format": {
+          "type": "topojson",
+          "feature": "prefectures"
+        }
       },
-      "mark": {"type": "geoshape", "fill": "#B0A285", "stroke": "#8A7C61", "strokeWidth": 0.6}
+      "mark": {
+        "type": "geoshape",
+        "fill": "#B0A285",
+        "stroke": "#8A7C61",
+        "strokeWidth": 0.6
+      }
     },
-
     {
       "data": {
         "url": "data/japan.json",
-        "format": {"type": "topojson", "feature": "prefectures"}
+        "format": {
+          "type": "topojson",
+          "feature": "prefectures"
+        }
       },
       "transform": [
         {
@@ -30,143 +43,417 @@
           "from": {
             "data": {
               "values": [
-                {"pid": "26", "rank": "Notable"},
-                {"pid": "16", "rank": "Notable"},
-                {"pid": "36", "rank": "Notable"}
+                {
+                  "pid": "26",
+                  "rank": "Notable"
+                },
+                {
+                  "pid": "16",
+                  "rank": "Notable"
+                },
+                {
+                  "pid": "36",
+                  "rank": "Notable"
+                }
               ]
             },
             "key": "pid",
-            "fields": ["rank"]
+            "fields": [
+              "rank"
+            ]
           }
         },
-        {"filter": "datum.rank != null"}
+        {
+          "filter": "datum.rank != null"
+        }
       ],
-      "mark": {"type": "geoshape", "fill": "#9A7B2E", "stroke": "#FAF7F0", "strokeWidth": 1.2}
+      "mark": {
+        "type": "geoshape",
+        "fill": "#9A7B2E",
+        "stroke": "#FAF7F0",
+        "strokeWidth": 1.2
+      }
     },
-
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 359,
+            "lat": 324
+          },
+          {
+            "lon": 404,
+            "lat": 284
+          },
+          {
+            "lon": 328,
+            "lat": 363
+          }
+        ]
+      },
+      "mark": {
+        "type": "circle",
+        "size": 150,
+        "fill": "#9A7B2E",
+        "stroke": "#FAF7F0",
+        "strokeWidth": 2.5
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        }
+      }
+    },
     {
       "data": {
         "url": "data/japan.json",
-        "format": {"type": "topojson", "feature": "municipalities"}
+        "format": {
+          "type": "topojson",
+          "feature": "municipalities"
+        }
       },
       "transform": [
-        {"filter": "datum.id != null && substring(datum.id, 0, 2) == '13' && toNumber(datum.id) < 13300"}
+        {
+          "filter": "datum.id != null && substring(datum.id, 0, 2) == '13' && toNumber(datum.id) < 13300"
+        }
       ],
-      "mark": {"type": "geoshape", "fill": "#D63838", "stroke": "#FAF7F0", "strokeWidth": 0.3}
-    },
-
-    {
-      "data": {
-        "values": [
-          {"lon1": 463, "lat1": 311, "lon2": 720, "lat2": 320},
-          {"lon1": 359, "lat1": 324, "lon2": 170, "lat2": 440},
-          {"lon1": 404, "lat1": 284, "lon2": 170, "lat2": 280},
-          {"lon1": 328, "lat1": 363, "lon2": 170, "lat2": 580}
-        ]
-      },
-      "mark": {"type": "rule", "color": "#A88B3D", "strokeWidth": 0.7, "opacity": 0.55},
-      "encoding": {
-        "longitude":  {"field": "lon1", "type": "quantitative"},
-        "latitude":   {"field": "lat1", "type": "quantitative"},
-        "longitude2": {"field": "lon2"},
-        "latitude2":  {"field": "lat2"}
-      }
-    },
-
-    {
-      "data": {"values": [{"label": "TOKYO", "lon": 720, "lat": 320}]},
       "mark": {
-        "type": "text", "font": "Shippori Mincho B1", "fontSize": 18, "fontWeight": 800,
-        "color": "#D63838", "align": "left", "dx": 6, "dy": -3
-      },
-      "encoding": {
-        "longitude": {"field": "lon", "type": "quantitative"},
-        "latitude":  {"field": "lat", "type": "quantitative"},
-        "text":      {"field": "label"}
-      }
-    },
-    {
-      "data": {"values": [{"sub": "542 studios · 87% national share", "lon": 720, "lat": 320}]},
-      "mark": {
-        "type": "text", "font": "IBM Plex Mono", "fontSize": 10,
-        "color": "#5A524F", "align": "left", "dx": 6, "dy": 14
-      },
-      "encoding": {
-        "longitude": {"field": "lon", "type": "quantitative"},
-        "latitude":  {"field": "lat", "type": "quantitative"},
-        "text":      {"field": "sub"}
-      }
-    },
-
-    {
-      "data": {
-        "values": [
-          {"label": "Kyoto Animation",   "lon": 170, "lat": 440},
-          {"label": "P.A. Works",        "lon": 170, "lat": 280},
-          {"label": "ufotable",          "lon": 170, "lat": 580}
-        ]
-      },
-      "mark": {
-        "type": "text", "font": "Shippori Mincho B1", "fontSize": 13, "fontWeight": 700,
-        "color": "#1A1716", "align": "right", "dx": -6, "dy": -3
-      },
-      "encoding": {
-        "longitude": {"field": "lon", "type": "quantitative"},
-        "latitude":  {"field": "lat", "type": "quantitative"},
-        "text":      {"field": "label"}
+        "type": "geoshape",
+        "fill": "#D63838",
+        "stroke": "#FAF7F0",
+        "strokeWidth": 0.3
       }
     },
     {
       "data": {
         "values": [
-          {"sub": "Uji, Kyoto · 1981",      "lon": 170, "lat": 440},
-          {"sub": "Nanto, Toyama · 2000",   "lon": 170, "lat": 280},
-          {"sub": "Tokushima · 2009",       "lon": 170, "lat": 580}
+          {
+            "lon1": 463,
+            "lat1": 311,
+            "lon2": 720,
+            "lat2": 320
+          },
+          {
+            "lon1": 359,
+            "lat1": 324,
+            "lon2": 170,
+            "lat2": 440
+          },
+          {
+            "lon1": 404,
+            "lat1": 284,
+            "lon2": 170,
+            "lat2": 280
+          },
+          {
+            "lon1": 328,
+            "lat1": 363,
+            "lon2": 170,
+            "lat2": 580
+          }
         ]
       },
       "mark": {
-        "type": "text", "font": "IBM Plex Mono", "fontSize": 10,
-        "color": "#5A524F", "align": "right", "dx": -6, "dy": 12
+        "type": "rule",
+        "color": "#A88B3D",
+        "strokeWidth": 0.7,
+        "opacity": 0.55
       },
       "encoding": {
-        "longitude": {"field": "lon", "type": "quantitative"},
-        "latitude":  {"field": "lat", "type": "quantitative"},
-        "text":      {"field": "sub"}
-      }
-    },
-
-    {
-      "data": {"values": [{"x": 545, "y": 560}]},
-      "mark": {"type": "square", "size": 130, "fill": "#D63838", "stroke": "#FAF7F0", "strokeWidth": 1, "xOffset": 0},
-      "encoding": {
-        "longitude": {"field": "x", "type": "quantitative"},
-        "latitude":  {"field": "y", "type": "quantitative"}
-      }
-    },
-    {
-      "data": {"values": [{"label": "Tokyo (542 studios)", "x": 545, "y": 560}]},
-      "mark": {"type": "text", "font": "Manrope", "fontSize": 11, "fontWeight": 600, "color": "#1A1716", "align": "left", "dx": 12},
-      "encoding": {
-        "longitude": {"field": "x", "type": "quantitative"},
-        "latitude":  {"field": "y", "type": "quantitative"},
-        "text":      {"field": "label"}
+        "longitude": {
+          "field": "lon1",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat1",
+          "type": "quantitative"
+        },
+        "longitude2": {
+          "field": "lon2"
+        },
+        "latitude2": {
+          "field": "lat2"
+        }
       }
     },
     {
-      "data": {"values": [{"x": 545, "y": 585}]},
-      "mark": {"type": "square", "size": 130, "fill": "#9A7B2E", "stroke": "#FAF7F0", "strokeWidth": 1},
+      "data": {
+        "values": [
+          {
+            "label": "TOKYO",
+            "lon": 720,
+            "lat": 320
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Shippori Mincho B1",
+        "fontSize": 18,
+        "fontWeight": 800,
+        "color": "#D63838",
+        "align": "left",
+        "dx": 6,
+        "dy": -3
+      },
       "encoding": {
-        "longitude": {"field": "x", "type": "quantitative"},
-        "latitude":  {"field": "y", "type": "quantitative"}
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
       }
     },
     {
-      "data": {"values": [{"label": "Prefecture with a notable studio", "x": 545, "y": 585}]},
-      "mark": {"type": "text", "font": "Manrope", "fontSize": 11, "fontWeight": 600, "color": "#1A1716", "align": "left", "dx": 12},
+      "data": {
+        "values": [
+          {
+            "sub": "542 studios · 87% national share",
+            "lon": 720,
+            "lat": 320
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "IBM Plex Mono",
+        "fontSize": 10,
+        "color": "#5A524F",
+        "align": "left",
+        "dx": 6,
+        "dy": 14
+      },
       "encoding": {
-        "longitude": {"field": "x", "type": "quantitative"},
-        "latitude":  {"field": "y", "type": "quantitative"},
-        "text":      {"field": "label"}
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "sub"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "label": "Kyoto Animation",
+            "lon": 170,
+            "lat": 440
+          },
+          {
+            "label": "P.A. Works",
+            "lon": 170,
+            "lat": 280
+          },
+          {
+            "label": "ufotable",
+            "lon": 170,
+            "lat": 580
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Shippori Mincho B1",
+        "fontSize": 13,
+        "fontWeight": 700,
+        "color": "#1A1716",
+        "align": "right",
+        "dx": -6,
+        "dy": -3
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "sub": "Uji, Kyoto · 1981",
+            "lon": 170,
+            "lat": 440
+          },
+          {
+            "sub": "Nanto, Toyama · 2000",
+            "lon": 170,
+            "lat": 280
+          },
+          {
+            "sub": "Tokushima · 2009",
+            "lon": 170,
+            "lat": 580
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "IBM Plex Mono",
+        "fontSize": 10,
+        "color": "#5A524F",
+        "align": "right",
+        "dx": -6,
+        "dy": 12
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "sub"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 545,
+            "y": 560
+          }
+        ]
+      },
+      "mark": {
+        "type": "square",
+        "size": 130,
+        "fill": "#D63838",
+        "stroke": "#FAF7F0",
+        "strokeWidth": 1,
+        "xOffset": 0
+      },
+      "encoding": {
+        "longitude": {
+          "field": "x",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "y",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "label": "Tokyo (542 studios)",
+            "x": 545,
+            "y": 560
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Manrope",
+        "fontSize": 11,
+        "fontWeight": 600,
+        "color": "#1A1716",
+        "align": "left",
+        "dx": 12
+      },
+      "encoding": {
+        "longitude": {
+          "field": "x",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 545,
+            "y": 585
+          }
+        ]
+      },
+      "mark": {
+        "type": "square",
+        "size": 130,
+        "fill": "#9A7B2E",
+        "stroke": "#FAF7F0",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "longitude": {
+          "field": "x",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "y",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "label": "Prefecture with a notable studio",
+            "x": 545,
+            "y": 585
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Manrope",
+        "fontSize": 11,
+        "fontWeight": 600,
+        "color": "#1A1716",
+        "align": "left",
+        "dx": 12
+      },
+      "encoding": {
+        "longitude": {
+          "field": "x",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
       }
     }
   ]
