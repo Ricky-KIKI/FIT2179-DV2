@@ -1,62 +1,206 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "description": "Annual anime studio closures, TDB data — uses 05_studio_closures_timeline.csv",
-
   "width": "container",
   "height": 280,
-  "padding": {"top": 10, "right": 30, "bottom": 30, "left": 50},
-
+  "padding": {
+    "top": 10,
+    "right": 30,
+    "bottom": 30,
+    "left": 50
+  },
   "data": {
     "url": "data/05_studio_closures_timeline.csv",
-    "format": {"type": "csv", "parse": {"closures_count": "number"}}
+    "format": {
+      "type": "csv",
+      "parse": {
+        "closures_count": "number"
+      }
+    }
   },
-
   "encoding": {
     "x": {
       "field": "year",
       "type": "ordinal",
       "title": null,
-      "axis": {"labelAngle": 0, "labelPadding": 8}
+      "axis": {
+        "labelAngle": 0,
+        "labelPadding": 8,
+        "labelExpr": "datum.label == 'gap' ? '' : datum.label"
+      },
+      "sort": [
+        "2018",
+        "gap",
+        "2023",
+        "2024",
+        "2025"
+      ]
     },
     "y": {
       "field": "closures_count",
       "type": "quantitative",
       "title": "Studios closed",
-      "axis": {"grid": true},
-      "scale": {"domain": [0, 18]}
+      "axis": {
+        "grid": true
+      },
+      "scale": {
+        "domain": [
+          0,
+          18
+        ]
+      }
     }
   },
-
   "layer": [
     {
-      "mark": {"type": "bar", "width": 28, "cornerRadiusEnd": 3},
+      "mark": {
+        "type": "bar",
+        "width": 28,
+        "cornerRadiusEnd": 3
+      },
       "encoding": {
         "color": {
           "field": "kind",
           "type": "nominal",
           "scale": {
-            "domain": ["full", "record", "partial"],
-            "range": ["#1A1716", "#D63838", "#A88B3D"]
+            "domain": [
+              "full",
+              "record",
+              "partial"
+            ],
+            "range": [
+              "#1A1716",
+              "#D63838",
+              "#A88B3D"
+            ]
           },
           "legend": null
         }
       }
     },
     {
-      "mark": {"type": "text", "align": "center", "baseline": "bottom", "dy": -5, "fontSize": 11, "font": "IBM Plex Mono", "color": "#1A1716"},
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "bottom",
+        "dy": -5,
+        "fontSize": 11,
+        "font": "IBM Plex Mono",
+        "color": "#1A1716"
+      },
       "encoding": {
-        "text": {"field": "closures_count"}
+        "text": {
+          "field": "closures_count"
+        }
       }
     },
     {
-      "transform": [{"filter": "datum.annotation != null && datum.annotation != ''"}],
-      "mark": {"type": "text", "align": "center", "baseline": "bottom", "dy": -22, "fontSize": 9, "font": "IBM Plex Mono", "fontStyle": "italic"},
+      "transform": [
+        {
+          "filter": "datum.annotation != null && datum.annotation != ''"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "bottom",
+        "dy": -22,
+        "fontSize": 9,
+        "font": "IBM Plex Mono",
+        "fontStyle": "italic"
+      },
       "encoding": {
-        "text": {"field": "annotation"},
+        "text": {
+          "field": "annotation"
+        },
         "color": {
-          "field": "kind", "type": "nominal",
-          "scale": {"domain": ["full", "record", "partial"], "range": ["#1A1716", "#D63838", "#A88B3D"]},
+          "field": "kind",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "full",
+              "record",
+              "partial"
+            ],
+            "range": [
+              "#1A1716",
+              "#D63838",
+              "#A88B3D"
+            ]
+          },
           "legend": null
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "year": "gap"
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#C9BFA8",
+        "strokeDash": [
+          3,
+          3
+        ],
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "sort": [
+            "2018",
+            "gap",
+            "2023",
+            "2024",
+            "2025"
+          ]
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "year": "gap",
+            "y": 9,
+            "label": "2019–22\nn/a"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 8,
+        "font": "IBM Plex Mono",
+        "fontStyle": "italic",
+        "color": "#A89B85",
+        "angle": 0,
+        "lineBreak": "\n"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "sort": [
+            "2018",
+            "gap",
+            "2023",
+            "2024",
+            "2025"
+          ]
+        },
+        "y": {
+          "value": 150
+        },
+        "text": {
+          "field": "label"
         }
       }
     }

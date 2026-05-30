@@ -3,82 +3,61 @@
   "description": "Anime worker monthly hours vs Japan national average — uses 07c_working_hours_timeseries.csv",
 
   "width": "container",
-  "height": 300,
-  "padding": {"top": 30, "right": 100, "bottom": 30, "left": 50},
-
-  "config": {
-    "view": {"stroke": null},
-    "axis": {
-      "domainColor": "#D9D2C5",
-      "tickColor": "#D9D2C5",
-      "labelColor": "#5A524F",
-      "labelFont": "IBM Plex Mono",
-      "labelFontSize": 11,
-      "titleColor": "#1A1716",
-      "titleFont": "Manrope",
-      "titleFontSize": 12
-    }
-  },
+  "height": 320,
+  "padding": {"top": 30, "right": 110, "bottom": 30, "left": 55},
 
   "data": {
     "url": "data/07c_working_hours_timeseries.csv",
     "format": {"type": "csv", "parse": {"year": "number", "monthly_hours": "number", "national_avg": "number"}}
   },
 
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "quantitative",
+      "scale": {"domain": [2007, 2025]},
+      "title": null,
+      "axis": {"format": "d", "labelAngle": 0, "values": [2008, 2013, 2017, 2021, 2024], "labelFont": "IBM Plex Mono", "labelFontSize": 11, "labelColor": "#5A524F", "labelPadding": 8}
+    }
+  },
+
   "layer": [
     {
-      "mark": {"type": "area", "color": "#D63838", "opacity": 0.1, "interpolate": "linear"},
+      "mark": {"type": "area", "color": "#D63838", "opacity": 0.1},
       "encoding": {
-        "x":  {
-          "field": "year", "type": "quantitative",
-          "scale": {"domain": [2007, 2025]},
-          "title": null,
-          "axis": {"format": "d", "labelAngle": 0, "values": [2008, 2013, 2017, 2021, 2024]}
+        "y": {
+          "field": "monthly_hours", "type": "quantitative",
+          "scale": {"domain": [140, 290]},
+          "title": "Monthly working hours",
+          "axis": {"grid": true, "gridColor": "#EAE3D5", "titleColor": "#1A1716", "titleFont": "Manrope", "titleFontSize": 12, "labelFont": "IBM Plex Mono", "labelFontSize": 11, "labelColor": "#5A524F"}
         },
-        "y":  {
-          "field": "national_avg", "type": "quantitative",
-          "scale": {"domain": [150, 290]},
-          "title": "Monthly working hours"
-        },
-        "y2": {"field": "monthly_hours"}
+        "y2": {"field": "national_avg"}
+      }
+    },
+    {
+      "mark": {"type": "line", "color": "#5A524F", "strokeWidth": 2, "point": {"filled": true, "size": 55, "color": "#5A524F"}},
+      "encoding": {
+        "y": {"field": "national_avg", "type": "quantitative", "scale": {"domain": [140, 290]}}
       }
     },
     {
       "mark": {"type": "line", "color": "#D63838", "strokeWidth": 2.5, "point": {"filled": true, "size": 70, "color": "#D63838"}},
       "encoding": {
-        "x": {
-          "field": "year", "type": "quantitative",
-          "scale": {"domain": [2007, 2025]},
-          "axis": null
-        },
-        "y": {
-          "field": "monthly_hours", "type": "quantitative",
-          "scale": {"domain": [150, 290]}
-        }
+        "y": {"field": "monthly_hours", "type": "quantitative", "scale": {"domain": [140, 290]}}
       }
     },
     {
-      "mark": {"type": "line", "color": "#5A524F", "strokeWidth": 2.5, "point": {"filled": true, "size": 70, "color": "#5A524F"}},
+      "mark": {"type": "text", "align": "center", "baseline": "bottom", "dy": -10, "fontSize": 11, "font": "IBM Plex Mono", "color": "#D63838", "fontWeight": 600},
       "encoding": {
-        "x": {
-          "field": "year", "type": "quantitative",
-          "scale": {"domain": [2007, 2025]},
-          "axis": null
-        },
-        "y": {
-          "field": "national_avg", "type": "quantitative",
-          "scale": {"domain": [150, 290]}
-        }
+        "y": {"field": "monthly_hours", "type": "quantitative", "scale": {"domain": [140, 290]}},
+        "text": {"field": "monthly_hours"}
       }
     },
     {
-      "transform": [
-        {"filter": "datum.year === 2024"}
-      ],
+      "transform": [{"filter": "datum.year === 2024"}],
       "mark": {"type": "text", "align": "left", "dx": 10, "fontSize": 12, "font": "Manrope", "fontWeight": 600, "color": "#D63838"},
       "encoding": {
-        "x": {"field": "year", "type": "quantitative", "scale": {"domain": [2007, 2025]}, "axis": null},
-        "y": {"field": "monthly_hours", "type": "quantitative", "scale": {"domain": [150, 290]}, "axis": null},
+        "y": {"field": "monthly_hours", "type": "quantitative", "scale": {"domain": [140, 290]}},
         "text": {"value": "Anime industry"}
       }
     },
@@ -86,18 +65,8 @@
       "transform": [{"filter": "datum.year === 2024"}],
       "mark": {"type": "text", "align": "left", "dx": 10, "fontSize": 12, "font": "Manrope", "fontWeight": 600, "color": "#5A524F"},
       "encoding": {
-        "x": {"field": "year", "type": "quantitative", "scale": {"domain": [2007, 2025]}, "axis": null},
-        "y": {"field": "national_avg", "type": "quantitative", "scale": {"domain": [150, 290]}, "axis": null},
-        "text": {"value": "Japan national avg"}
-      }
-    },
-    {
-      "data": {"values": [{"year": 2015, "hours": 215, "label": "↕ persistent gap above national average"}]},
-      "mark": {"type": "text", "align": "center", "fontSize": 10, "font": "IBM Plex Mono", "color": "#D63838", "fontStyle": "italic", "opacity": 0.8},
-      "encoding": {
-        "x": {"field": "year", "type": "quantitative", "scale": {"domain": [2007, 2025]}, "axis": null},
-        "y": {"field": "hours", "type": "quantitative", "scale": {"domain": [150, 290]}, "axis": null},
-        "text": {"field": "label"}
+        "y": {"field": "national_avg", "type": "quantitative", "scale": {"domain": [140, 290]}},
+        "text": {"value": "Japan avg (162)"}
       }
     }
   ]
