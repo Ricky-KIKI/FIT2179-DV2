@@ -181,20 +181,38 @@
       "data": {
         "values": [
           {
-            "name": "Toei Animation",
-            "lon": 460.2,
-            "lat": 309.55
+            "lon": 460.198,
+            "lat": 309.553,
+            "name": "Toei Animation"
+          },
+          {
+            "lon": 460.795,
+            "lat": 310.201,
+            "name": "Mushi Production"
+          },
+          {
+            "lon": 461.054,
+            "lat": 310.694,
+            "name": "Sunrise"
+          },
+          {
+            "lon": 461.197,
+            "lat": 311.044,
+            "name": "ufotable"
           }
         ]
       },
       "mark": {
         "type": "text",
         "font": "Manrope",
-        "fontSize": 11,
+        "fontSize": 12,
         "fontWeight": 600,
-        "color": "#FAF7F0",
+        "fill": "#F2EDDF",
+        "stroke": "#F2EDDF",
+        "strokeWidth": 3.5,
         "align": "left",
-        "dx": 10
+        "dx": 12,
+        "dy": 0
       },
       "encoding": {
         "longitude": {
@@ -214,25 +232,105 @@
       "data": {
         "values": [
           {
-            "name": "MAPPA",
+            "lon": 461.002,
+            "lat": 311.497,
+            "name": "WHITE FOX"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Manrope",
+        "fontSize": 12,
+        "fontWeight": 600,
+        "fill": "#F2EDDF",
+        "stroke": "#F2EDDF",
+        "strokeWidth": 3.5,
+        "align": "center",
+        "dx": 0,
+        "dy": 18
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "name"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 460.198,
+            "lat": 310.395,
+            "name": "Bones"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Manrope",
+        "fontSize": 12,
+        "fontWeight": 600,
+        "fill": "#F2EDDF",
+        "stroke": "#F2EDDF",
+        "strokeWidth": 3.5,
+        "align": "center",
+        "dx": 0,
+        "dy": -16
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "name"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
             "lon": 459.55,
-            "lat": 310.7
+            "lat": 310.694,
+            "name": "MAPPA"
           },
           {
-            "name": "Trigger",
-            "lon": 459.6,
-            "lat": 311.65
+            "lon": 459.602,
+            "lat": 311.653,
+            "name": "Trigger"
+          },
+          {
+            "lon": 457.489,
+            "lat": 311.186,
+            "name": "Studio Ghibli"
           }
         ]
       },
       "mark": {
         "type": "text",
         "font": "Manrope",
-        "fontSize": 11,
+        "fontSize": 12,
         "fontWeight": 600,
-        "color": "#FAF7F0",
+        "fill": "#F2EDDF",
+        "stroke": "#F2EDDF",
+        "strokeWidth": 3.5,
         "align": "right",
-        "dx": -10
+        "dx": -12,
+        "dy": 0
       },
       "encoding": {
         "longitude": {
@@ -252,96 +350,36 @@
       "data": {
         "values": [
           {
-            "name": "Bones",
-            "lon": 460.2,
-            "lat": 310.4
-          }
-        ]
-      },
-      "mark": {
-        "type": "text",
-        "font": "Manrope",
-        "fontSize": 11,
-        "fontWeight": 600,
-        "color": "#FAF7F0",
-        "align": "center",
-        "dy": -14
-      },
-      "encoding": {
-        "longitude": {
-          "field": "lon",
-          "type": "quantitative"
-        },
-        "latitude": {
-          "field": "lat",
-          "type": "quantitative"
-        },
-        "text": {
-          "field": "name"
-        }
-      }
-    },
-    {
-      "data": {
-        "values": [
-          {
-            "name": "WHITE FOX",
-            "lon": 461.0,
-            "lat": 311.5
-          }
-        ]
-      },
-      "mark": {
-        "type": "text",
-        "font": "Manrope",
-        "fontSize": 11,
-        "fontWeight": 600,
-        "color": "#FAF7F0",
-        "align": "center",
-        "dy": 16
-      },
-      "encoding": {
-        "longitude": {
-          "field": "lon",
-          "type": "quantitative"
-        },
-        "latitude": {
-          "field": "lat",
-          "type": "quantitative"
-        },
-        "text": {
-          "field": "name"
-        }
-      }
-    },
-    {
-      "data": {
-        "values": [
-          {
-            "name": "Sunrise",
-            "lon": 461.05,
-            "lat": 310.7
+            "lon": 460.198,
+            "lat": 309.553,
+            "name": "Toei Animation"
           },
           {
-            "name": "ufotable",
-            "lon": 461.2,
-            "lat": 311.05
+            "lon": 460.795,
+            "lat": 310.201,
+            "name": "Mushi Production"
           },
           {
-            "name": "Mushi Production",
-            "lon": 460.8,
-            "lat": 310.2
+            "lon": 461.054,
+            "lat": 310.694,
+            "name": "Sunrise"
+          },
+          {
+            "lon": 461.197,
+            "lat": 311.044,
+            "name": "ufotable"
           }
         ]
       },
       "mark": {
         "type": "text",
         "font": "Manrope",
-        "fontSize": 11,
+        "fontSize": 12,
         "fontWeight": 600,
-        "color": "#1A1716",
+        "fill": "#1A1716",
         "align": "left",
-        "dx": 10
+        "dx": 12,
+        "dy": 0
       },
       "encoding": {
         "longitude": {
@@ -361,20 +399,99 @@
       "data": {
         "values": [
           {
-            "name": "Studio Ghibli",
-            "lon": 457.49,
-            "lat": 311.19
+            "lon": 461.002,
+            "lat": 311.497,
+            "name": "WHITE FOX"
           }
         ]
       },
       "mark": {
         "type": "text",
         "font": "Manrope",
-        "fontSize": 11,
+        "fontSize": 12,
         "fontWeight": 600,
-        "color": "#1A1716",
+        "fill": "#1A1716",
+        "align": "center",
+        "dx": 0,
+        "dy": 18
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "name"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 460.198,
+            "lat": 310.395,
+            "name": "Bones"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Manrope",
+        "fontSize": 12,
+        "fontWeight": 600,
+        "fill": "#1A1716",
+        "align": "center",
+        "dx": 0,
+        "dy": -16
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "name"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 459.55,
+            "lat": 310.694,
+            "name": "MAPPA"
+          },
+          {
+            "lon": 459.602,
+            "lat": 311.653,
+            "name": "Trigger"
+          },
+          {
+            "lon": 457.489,
+            "lat": 311.186,
+            "name": "Studio Ghibli"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Manrope",
+        "fontSize": 12,
+        "fontWeight": 600,
+        "fill": "#1A1716",
         "align": "right",
-        "dx": -10
+        "dx": -12,
+        "dy": 0
       },
       "encoding": {
         "longitude": {

@@ -74,9 +74,9 @@
       ],
       "mark": {
         "type": "geoshape",
-        "fill": "#9A7B2E",
+        "fill": "#C8821E",
         "stroke": "#FAF7F0",
-        "strokeWidth": 1.2
+        "strokeWidth": 1.5
       }
     },
     {
@@ -98,8 +98,8 @@
       },
       "mark": {
         "type": "circle",
-        "size": 150,
-        "fill": "#9A7B2E",
+        "size": 120,
+        "fill": "#1A1716",
         "stroke": "#FAF7F0",
         "strokeWidth": 2.5
       },
@@ -140,7 +140,7 @@
           {
             "lon1": 463,
             "lat1": 311,
-            "lon2": 720,
+            "lon2": 684,
             "lat2": 320
           },
           {
@@ -191,7 +191,7 @@
         "values": [
           {
             "label": "TOKYO",
-            "lon": 720,
+            "lon": 690,
             "lat": 320
           }
         ]
@@ -225,7 +225,7 @@
         "values": [
           {
             "sub": "542 studios · 87% of Japan",
-            "lon": 720,
+            "lon": 690,
             "lat": 320
           }
         ]
@@ -351,7 +351,7 @@
       },
       "mark": {
         "type": "square",
-        "size": 130,
+        "size": 200,
         "fill": "#D63838",
         "stroke": "#FAF7F0",
         "strokeWidth": 1,
@@ -412,8 +412,8 @@
       },
       "mark": {
         "type": "square",
-        "size": 130,
-        "fill": "#9A7B2E",
+        "size": 200,
+        "fill": "#C8821E",
         "stroke": "#FAF7F0",
         "strokeWidth": 1
       },
